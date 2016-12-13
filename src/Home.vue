@@ -20,7 +20,7 @@
           <badge text="捐赠"></badge>
         </div>
       </cell>
-      <cell title="Github" link="http://github.com/airyland/vux" value="Star me">
+      <cell title="Github" link="https://github.com/jinhuiWong/vux-2.0" value="Star me">
         <span class="demo-icon" slot="icon" style="color:#35495e;">&#xe62f;</span>
       </cell>
     </group>
@@ -46,6 +46,9 @@ export default {
 
 <style>
 @import './demos/style.css';
+.badge-value{
+  display: inline-block;
+}
 .center {
   margin-top: 15px;
   text-align: center;

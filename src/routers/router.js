@@ -9,9 +9,12 @@ var rootPath="/";
 
 const Home = resolve => require(['../Home.vue'], resolve)
 const Demo = resolve => require(['../demos/Demo.vue'], resolve)
+const Cell = resolve => require(['../demos/Cell'], resolve)
 const Tab = resolve => require(['../demos/Tab'], resolve)
-
-
+const Swiper = resolve => require(['../demos/Swiper'], resolve)
+const Tabbar = resolve => require(['../demos/Tabbar'], resolve)
+const TabbarLink = resolve => require(['../demos/TabbarLink'], resolve)
+const Flexbox = resolve => require(['../demos/Flexbox'], resolve)
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
 
 const router = new VueRouter({
@@ -22,8 +25,12 @@ const router = new VueRouter({
 
         { path: rootPath, component: Home, meta: { scrollToTop: true }, name: 'home' },
         { path: rootPath + 'demo', component: Demo , name: 'demo'},
-        { path: rootPath + 'component/tab', component: Tab , name: 'tab',meta: { scrollToTop: true }},
-        { path: rootPath + 'component/tab', component: Tab , name: 'tab',meta: { scrollToTop: true }},
+        { path: rootPath + 'component/cell', component: Cell , name: 'cell'},
+        { path: rootPath + 'component/tab', component: Tab , name: 'tab'},
+        { path: rootPath + 'component/swiper', component: Swiper , name: 'swiper'},
+        { path: rootPath + 'component/tabbar', component: Tabbar , name: 'tabbar'},
+        { path: rootPath + 'component/tabbar-link', component: TabbarLink , name: 'tabbarLink'},
+        { path: rootPath + 'component/flexbox', component: Flexbox , name: 'flexbox'},
         //找不到页面就返回404页面
         {
             path: '*',

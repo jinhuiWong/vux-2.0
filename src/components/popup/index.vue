@@ -19,7 +19,7 @@ export default {
       default: true
     }
   },
-  ready () {
+  mounted () {
     const _this = this
     this.popup = new Popup({
       container: _this.$el,

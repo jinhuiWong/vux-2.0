@@ -5,7 +5,7 @@
     </div>
     <tabbar>
       <!--use v-link-->
-      <tabbar-item v-link="{path:'/component/cell'}">
+      <tabbar-item link="{path:'/component/cell'}">
         <img slot="icon" src="../assets/demo/icon_nav_button.png">
         <span slot="label">Wechat</span>
       </tabbar-item>
@@ -32,7 +32,7 @@
 import { Tabbar, TabbarItem } from '../components'
 
 export default {
-  ready () {
+  mounted () {
     document.querySelector('body').style.height = '100%'
     document.querySelector('html').style.height = '100%'
     document.querySelector('#app').style.height = '100%'

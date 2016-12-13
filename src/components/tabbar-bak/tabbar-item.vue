@@ -25,7 +25,6 @@ export default {
             }
         }
     },
-    // mixins: [childMixin],
     props: {
         showDot: {
             type: Boolean,

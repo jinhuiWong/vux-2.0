@@ -61,7 +61,6 @@ function saveDemoScrollTop () {
 }
 
 router.beforeEach((to, from, next) => {
-  debugger
   if (to.fullPath !== '/demo') {
     window.removeEventListener('scroll', saveDemoScrollTop, false)
   }
@@ -82,8 +81,6 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from, next) => {
-  debugger
-  console.log(router.app.$refs);
   if (to.path !== '/demo') {
     window.scrollTo(0, 0)
   } else {

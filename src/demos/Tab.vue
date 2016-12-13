@@ -35,10 +35,10 @@
     <br/>
     <br/>
     <br/>
-    <tab :line-width=2 active-color='#fc378c' :index.sync="index">
+    <tab :line-width=2 active-color='#fc378c' :index="index" @on-index-change="onIndexChange">
       <tab-item class="vux-center" :selected="demo2 === item" v-for="item in list2" @click="demo2 = item">{{item}}</tab-item>
     </tab>
-<!--     <swiper :index.sync="index" height="100px" :show-dots="false">
+    <swiper :index="index" height="100px" :show-dots="false" @on-index-change="onIndexChange">
       <swiper-item v-for="item in list2">
         <div class="tab-swiper vux-center">{{item}} Container</div>
       </swiper-item>
@@ -60,7 +60,7 @@
       <tab :line-width=1>
         <tab-item :selected="demo4 === item" v-for="item in list4" @click="demo4 = item">{{item}}</tab-item>
       </tab>
-    </sticky> -->
+    </sticky>
     <br/>
     <br/>
     <br/>
@@ -171,6 +171,10 @@ export default {
       } else {
         --this.index
       }
+    },
+    //1.0中的.sync方式改成自定义事件由父组件控制数据的同步
+    onIndexChange(currentIndex){
+      this.index=currentIndex;
     }
   }
 }

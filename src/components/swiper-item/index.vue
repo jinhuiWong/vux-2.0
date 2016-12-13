@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  ready () {
+  mounted () {
     this.$parent.rerender()
   },
   beforeDestroy () {

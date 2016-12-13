@@ -11,13 +11,13 @@ import Cell from './cell'
 // import Switch from './switch'
 // import XTextarea from './x-textarea'
 import Group from './group'
-// import GroupTitle from './group-title'
+import GroupTitle from './group-title'
 // import Box from './box'
 // import Tip from './tip'
 // import Selector from './selector'
 import XButton from './x-button'
-// import Swiper from './swiper'
-// import SwiperItem from './swiper-item'
+import Swiper from './swiper'
+import SwiperItem from './swiper-item'
 import Sticky from './sticky'
 // import Picker from './picker'
 // import Datetime from './datetime'
@@ -36,7 +36,7 @@ import Loading from './loading'
 // import XImg from './x-img'
 // import Spinner from './spinner'
 // import Calendar from './calendar'
-// import Icon from './icon'
+import Icon from './icon'
 // import Circle from './circle'
 // import ColorPicker from './color-picker'
 // import AddressChinaData from './address/list.json'
@@ -64,7 +64,7 @@ import ViewBox from './view-box'
 
 // import { ButtonTab, ButtonTabItem } from './button-tab'
 // import { Checker, CheckerItem } from './checker'
-// import { Flexbox, FlexboxItem } from './flexbox'
+import { Flexbox, FlexboxItem } from './flexbox'
 // import { Step, StepItem } from './step'
 // import { Timeline, TimelineItem } from './timeline'
 import { Tabbar, TabbarItem } from './tabbar'
@@ -75,7 +75,7 @@ const vux = {
   Group,
   // DevTip,
   // XInput,
-  // GroupTitle,
+  GroupTitle,
   // XNumber,
   // Checklist,
   // Switch,
@@ -86,12 +86,12 @@ const vux = {
   // InlineDesc,
   XButton,
   // XTextarea,
-  // Flexbox,
-  // FlexboxItem,
+  Flexbox,
+  FlexboxItem,
   Tab,
   TabItem,
-  // Swiper,
-  // SwiperItem,
+  Swiper,
+  SwiperItem,
   Sticky,
   // Picker,
   // Datetime,
@@ -110,7 +110,7 @@ const vux = {
   // XImg,
   // Spinner,
   // Calendar,
-  // Icon,
+  Icon,
   // Circle,
   // ColorPicker,
   // AddressChinaData,

@@ -2,7 +2,7 @@
   <div class="vux-slider">
     <div class="vux-swiper" :style="{height: xheight}">
       <slot></slot>
-      <div class="vux-swiper-item" v-for="(index, item) in list" @click="clickListItem(item)" :data-index="index">
+      <div class="vux-swiper-item" v-for="(item, index) in list" @click="clickListItem(item)" :data-index="index">
         <a href="javascript:">
           <div class="vux-img" :style="{backgroundImage: buildBackgroundUrl(item.img)}"></div>
           <p class="vux-swiper-desc" v-if="showDescMask">{{item.title}}</p>
@@ -11,7 +11,7 @@
     </div>
     <div :class="[dotsClass, 'vux-indicator', 'vux-indicator-' + dotsPosition]" v-show="showDots">
       <a href="javascript:" v-for="key in length">
-        <i class="vux-icon-dot" :class="{'active': key === current}"></i>
+        <i class="vux-icon-dot" :class="{'active': key-1 === props_index }"></i>
       </a>
     </div>
   </div>
@@ -19,10 +19,9 @@
 
 <script>
 import Swiper from './swiper'
-import { go } from '../../libs/router'
 
 export default {
-  ready () {
+  mounted () {
     if (!(this.list && this.list.length === 0)) {
       this.render()
     }
@@ -30,7 +29,7 @@ export default {
   },
   methods: {
     clickListItem (item) {
-      go(item.url, this.$router)
+      this.$router.push(item.url);
       this.$emit('on-click-list-item', JSON.parse(JSON.stringify(item)))
     },
     buildBackgroundUrl (url) {
@@ -52,7 +51,7 @@ export default {
       })
       .on('swiped', (prev, index) => {
         this.current = index % this.length
-        this.index = index % this.length
+        this.props_index = index % this.length
       })
     },
     rerender () {
@@ -60,7 +59,7 @@ export default {
         return
       }
       this.$nextTick(() => {
-        this.index = 0
+        this.props_index = 0
         this.current = 0
         this.length = this.list.length || this.$children.length
         this.destroy()
@@ -139,9 +138,10 @@ export default {
   },
   data () {
     return {
-      current: this.index,
+      current: this.props_index,
       xheight: 'auto',
-      length: this.list.length
+      length: this.list.length,
+      props_index:0
     }
   },
   watch: {
@@ -151,12 +151,15 @@ export default {
     current (currentIndex) {
       this.$emit('on-index-change', currentIndex)
     },
-    index (val) {
+    props_index:function(val){
       if (val !== this.current) {
         this.$nextTick(() => {
           this.swiper.go(val)
         })
       }
+    },
+    index (newIndex, oldIndex) {
+      this.props_index=newIndex;
     }
   },
   beforeDestroy () {

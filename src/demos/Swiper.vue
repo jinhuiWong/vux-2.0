@@ -89,15 +89,15 @@ import { Swiper, GroupTitle, SwiperItem, XButton, Divider } from '../components'
 const baseList =
 [{
   url: 'javascript:',
-  img: 'http://7xqzw4.com2.z0.glb.qiniucdn.com/1.jpg',
+  img: 'http://og1rlwcj8.bkt.clouddn.com/20141111234454_AwKCm.thumb.700_0.jpeg',
   title: '如何手制一份秋意的茶？'
 }, {
   url: 'javascript:',
-  img: 'http://7xqzw4.com2.z0.glb.qiniucdn.com/2.jpg',
+  img: 'http://og1rlwcj8.bkt.clouddn.com/u=897623406,24655471&fm=21&gp=0.jpg',
   title: '茶包VS原叶茶'
 }, {
   url: 'javascript:',
-  img: 'http://7xqzw4.com2.z0.glb.qiniucdn.com/3.jpg',
+  img: 'http://og1rlwcj8.bkt.clouddn.com/u=3737719926,1965507257&fm=21&gp=0.jpg',
   title: '播下茶籽，明春可发芽？'
 }]
 
@@ -128,7 +128,7 @@ export default {
     XButton,
     Divider
   },
-  ready () {
+  mounted () {
 
   },
   methods: {
