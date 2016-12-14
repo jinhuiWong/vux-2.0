@@ -8,7 +8,7 @@
     </scroller>
 
     <divider>Chinese: 下拉刷新</divider>
-    <scroller lock-x scrollbar-y use-pulldown :pulldown-config={content:'下拉刷新',downContent:'下拉刷新',upContent:'释放刷新',loadingContent:'加载中'} height="200px" @pulldown:loading="load">
+    <scroller lock-x scrollbar-y use-pulldown :pulldown-config="{content:'下拉刷新',downContent:'下拉刷新',upContent:'释放刷新',loadingContent:'加载中'}" height="200px" @pulldown:loading="load">
       <div class="box2">
         <p v-for="i in 80">占位 {{i}}</p>
       </div>
@@ -43,10 +43,10 @@ export default {
     Spinner
   },
   methods: {
-    load (uuid) {
-      setTimeout(() => {
-        this.$broadcast('pulldown:reset', uuid)
-      }, 2000)
+    load (that) {
+      setTimeout(function () {
+        that.$emit('pulldown:reset', that.uuid)
+      }, 1000)
     }
   },
   data () {

@@ -6,9 +6,9 @@ import Style from '../styles/index.vue' // eslint-disable-line
 // import XInput from './x-input'
 // import XNumber from './x-number'
 import Cell from './cell'
-// import InlineDesc from './inline-desc'
+import InlineDesc from './inline-desc'
 // import Checklist from './checklist'
-// import Switch from './switch'
+import XSwitch from './x-switch'
 // import XTextarea from './x-textarea'
 import Group from './group'
 import GroupTitle from './group-title'
@@ -21,20 +21,20 @@ import SwiperItem from './swiper-item'
 import Sticky from './sticky'
 // import Picker from './picker'
 // import Datetime from './datetime'
-// import Popup from './popup'
+import Popup from './popup'
 // import Range from './range'
 // import Actionsheet from './actionsheet'
 // import Clocker from './clocker'
 // import Rater from './rater'
 // import PopupPicker from './popup-picker'
 // import Address from './address'
-// import Toast from './toast'
+import Toast from './toast'
 import Loading from './loading'
 // import Alert from './alert'
 // import Confirm from './confirm'
 // import Progress from './progress'
 // import XImg from './x-img'
-// import Spinner from './spinner'
+import Spinner from './spinner'
 // import Calendar from './calendar'
 import Icon from './icon'
 // import Circle from './circle'
@@ -43,7 +43,7 @@ import Icon from './icon'
 import Divider from './divider'
 // import Blur from './blur'
 // import Countup from './countup'
-// import Scroller from './scroller'
+import Scroller from './scroller'
 // import Shake from './shake'
 // import WechatEmotion from './wechat-emotion'
 // import Search from './search'
@@ -78,12 +78,12 @@ const vux = {
   GroupTitle,
   // XNumber,
   // Checklist,
-  // Switch,
+  XSwitch,
   // Box,
   // Tip,
   // Selector,
   Cell,
-  // InlineDesc,
+  InlineDesc,
   XButton,
   // XTextarea,
   Flexbox,
@@ -95,20 +95,20 @@ const vux = {
   Sticky,
   // Picker,
   // Datetime,
-  // Popup,
+  Popup,
   // Range,
   // Actionsheet,
   // Clocker,
   // Rater,
   // PopupPicker,
   // Address,
-  // Toast,
+  Toast,
   Loading,
   // Alert,
   // Confirm,
   // Progress,
   // XImg,
-  // Spinner,
+  Spinner,
   // Calendar,
   Icon,
   // Circle,
@@ -117,7 +117,7 @@ const vux = {
   Divider,
   // Blur,
   // Countup,
-  // Scroller,
+  Scroller,
   // Shake,
   // WechatEmotion,
   // Search,

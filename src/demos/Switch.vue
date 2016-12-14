@@ -1,25 +1,25 @@
 <template>
   <div>
     <group title="default">
-      <switch title="default setting"></switch>
-      <switch title="default true" :value="true"></switch>
+      <x-switch title="default setting"></x-switch>
+      <x-switch title="default true" :value="true"></x-switch>
     </group>
     <group title="disabled">
-      <switch title="default setting" disabled></switch>
-      <switch title="default true" :value="true" disabled></switch>
+      <x-switch title="default setting" disabled></x-switch>
+      <x-switch title="default true" :value="true" disabled></x-switch>
     </group>
     <group title="html title">
-      <switch title="<span style='color:red'>I'm Red.</span>">I'm red</span>" disabled></switch>
+      <x-switch title="<span style='color:red'>I'm Red.</span>">I'm red</span>" disabled></x-switch>
     </group>
   </div>
 </template>
 
 <script>
-import { Switch, Group } from '../components'
+import { XSwitch, Group } from '../components'
 
 export default {
   components: {
-    Switch,
+    XSwitch,
     Group
   }
 }

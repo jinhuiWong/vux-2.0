@@ -1,11 +1,13 @@
+
 <template>
   <div class="weui_cell weui_cell_switch">
+  <!-- <p v-show="value">ggggg</p> -->
     <div class="weui_cell_hd weui_cell_primary">
       <label class="weui_label" :style="labelStyle" v-html="title"></label>
       <inline-desc v-if="inlineDesc">{{inlineDesc}}</inline-desc>
     </div>
     <div class="weui_cell_ft">
-      <input class="weui_switch" type="checkbox" :disabled="disabled" v-model="value"/>
+      <input class="weui_switch" type="checkbox" :disabled="disabled" v-model="props_value"/>
     </div>
   </div>
 </template>
@@ -26,21 +28,27 @@ export default {
       }
     }
   },
+  data(){
+    return {
+      props_value: false
+    }
+  },
   props: {
     title: {
       type: String,
       required: true
     },
     disabled: Boolean,
-    value: {
-      type: Boolean,
-      default: false
-    },
+    value: Boolean,
     inlineDesc: String
   },
   watch: {
     value (newVal) {
-      this.$emit('on-change', newVal)
+      this.props_value=newVal;
+    },
+    props_value(newVal){
+      this.$emit('on-change', newVal);
+      this.$emit('input',newVal);
     }
   }
 }

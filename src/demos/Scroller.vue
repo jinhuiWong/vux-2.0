@@ -29,7 +29,7 @@
     </scroller>
 
     <divider>A Vertical Scroller with scrollbar y</divider>
-    <scroller lock-x scrollbar-y height="200px" :prevent-default="false" v-ref:scroller>
+    <scroller lock-x scrollbar-y height="200px" :prevent-default="false" ref="scroller">
       <div class="box2">
         <p v-for="i in 80" v-if="showList1">placeholder {{i}}</p>
         <p v-for="i in 10" v-if="!showList1">placeholder {{i}}</p>
@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     changeList () {
-      this.showList1 = false
+      this.showList1 = !this.showList1
       this.$nextTick(() => {
         this.$refs.scroller.reset({
           top: 0

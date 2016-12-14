@@ -1,7 +1,11 @@
 <template>
-  <div v-show="show" transition="vux-popup" :style="{height:height}" class="vux-popup">
-    <slot></slot>
-  </div>
+    <transition  name="vux-popup">
+      <div v-show="props_show" :style="{height:height}" class="vux-popup">
+        <!-- 此处input只做双向数据绑定用(props 的value 属性必须有)-->
+        <input v-model="props_show" style="display:none">
+        <slot></slot>
+      </div>
+    </transition>
 </template>
 
 <script>
@@ -10,6 +14,7 @@ import Popup from './popup'
 export default {
   props: {
     show: Boolean,
+    value:Boolean,
     height: {
       type: String,
       default: 'auto'
@@ -27,10 +32,10 @@ export default {
       hideOnBlur: _this.hideOnBlur,
       onOpen (dialog) {
         _this.fixSafariOverflowScrolling('auto')
-        _this.show = true
+        _this.props_show = true
       },
       onClose (dialog) {
-        _this.show = false
+        _this.props_show = false
         if (Object.keys(window.__$vuxPopups).length >= 1) return
         _this.fixSafariOverflowScrolling('touch')
       }
@@ -52,11 +57,18 @@ export default {
   },
   data () {
     return {
-      hasFirstShow: false
+      hasFirstShow: false,
+      props_show: false
     }
   },
   watch: {
     show (val) {
+      this.props_show=val
+    },
+    value(val){
+      this.props_show=val
+    },
+    props_show(val){
       if (val) {
         this.popup.show()
         this.$emit('on-show')
@@ -69,6 +81,7 @@ export default {
         this.show = false
         this.popup.hide(false)
       }
+      this.$emit('input',val);
     }
   },
   beforeDestroy () {
@@ -89,8 +102,6 @@ export default {
   width: 100%;
   background: #eee;
   z-index: 101;
-  transition-property: transform;
-  transition-duration: 300ms;
 }
 .vux-popup-mask {
   display: block;
@@ -109,11 +120,11 @@ export default {
   z-index: 100;
   transition: opacity 0.3s;
 }
-.vux-popup-transiton {}
-.vux-popup-enter {
-  transform: translate3d(0, 100%, 0);
+
+.vux-popup-enter-active, .vux-popup-leave-active {
+  transition: transform .3s
 }
-.vux-popup-leave {
+.vux-popup-enter, .vux-popup-leave-active {
   transform: translate3d(0, 100%, 0);
 }
 </style>

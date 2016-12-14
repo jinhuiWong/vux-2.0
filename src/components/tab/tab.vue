@@ -1,5 +1,6 @@
 <template>
   <div class="vux-tab" :class="{'vux-tab-no-animate': !animate}">
+    <input v-model="props_index" style="display:none">
     <slot></slot>
     <div v-if="animate" class="vux-tab-ink-bar" :class="barClass" :style="barStyle"></div>
   </div>
@@ -21,6 +22,10 @@ export default {
   },
   props: {
     index: {
+      type: Number,
+      default: 0
+    },
+    value: {
       type: Number,
       default: 0
     },
@@ -70,6 +75,9 @@ export default {
     }
   },
   watch: {
+    value(val){
+      this.props_index=val
+    },
     index : function(newIndex, oldIndex){
         this.props_index=newIndex;
     },
@@ -77,6 +85,7 @@ export default {
       this.direction = newIndex > oldIndex ? 'forward' : 'backward'
       oldIndex > -1 && this.$children[oldIndex] && (this.$children[oldIndex].props_selected = false)
       newIndex > -1 && (this.$children[newIndex].props_selected = true)
+      this.$emit('input',newIndex);
     }
   },
   methods: {

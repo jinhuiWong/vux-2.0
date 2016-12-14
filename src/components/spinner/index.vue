@@ -7,7 +7,7 @@ import Spinner from './spinner'
 const types = ['android', 'ios', 'ios-small', 'bubbles', 'circles', 'crescent', 'dots', 'lines', 'ripple', 'spiral']
 
 export default {
-  ready () {
+  mounted () {
     Spinner(this.$el, this.type)
   },
   props: {

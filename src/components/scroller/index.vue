@@ -122,21 +122,66 @@ export default {
   },
   computed: {
     styles () {
-      if (!this.height && !this.$el.style.height && this.lockX) {
-        this.height = `${document.documentElement.clientHeight}px`
+      if (!this.props_height && this.elHeight && this.lockX) {
+        this.props_height = `${document.documentElement.clientHeight}px`
         this.reset()
       }
 
-      if (this.height && this.height.indexOf('-') === 0) {
-        this.height = `${document.documentElement.clientHeight + parseInt(this.height)}px`
+      if (this.props_height && this.props_height.indexOf('-') === 0) {
+        this.props_height = `${document.documentElement.clientHeight + parseInt(this.props_height)}px`
       }
 
       return {
-        height: `${this.height}`
+        height: `${this.props_height}`
       }
     }
   },
-  ready () {
+    beforeMount() {
+    this.uuid = Math.random().toString(36).substring(3, 8);
+    //fix2.0
+    this.props_height=this.height;
+    this.props_pulldownStatus=this.pulldownStatus;
+    //on事件
+    this.$on('pulldown:reset',function(uuid) {
+      // set pulldown status to default
+      this.props_pulldownStatus = 'default'
+      if (uuid === this.uuid) {
+        this.pulldown.reset(() => {
+          // repaint
+          this.reset()
+        })
+      }
+    });
+    this.$on('pullup:reset',function(uuid) {
+      // set pulldown status to default
+      this._pullupStatus = 'default'
+      if (uuid === this.uuid) {
+        this.pullup.complete()
+        this.reset()
+      }
+    });
+    this.$on('pullup:done' ,function(uuid) {
+      if (uuid === this.uuid) {
+        this._xscroll.unplug(this.pullup)
+      }
+    });
+    this.$on('scroller:reset' ,function(uuid) {
+      if (uuid === this.uuid) {
+        this.reset()
+      }
+    });
+    this.$on('pullup:disable',function(uuid) {
+      if (uuid === this.uuid) {
+        this.pullup.stop()
+      }
+    });
+    this.$on('pullup:enable',function(uuid) {
+      if (uuid === this.uuid) {
+        this.pullup.restart()
+      }
+    });
+  },
+  mounted () {
     this.$el.setAttribute('id', `vux-scroller-${this.uuid}`)
     let content = null
     const slotChildren = this.$el.querySelector('.xs-container').childNodes
@@ -176,10 +221,10 @@ export default {
       this.pulldown = new Pulldown(config)
       this._xscroll.plug(this.pulldown)
       this.pulldown.on('loading', (e) => {
-        this.$emit('pulldown:loading', this.uuid)
+        this.$emit('pulldown:loading', this)
       })
       this.pulldown.on('statuschange', (val) => {
-        this.pulldownStatus = val.newVal
+        this.props_pulldownStatus = val.newVal
       })
     }
 
@@ -194,7 +239,7 @@ export default {
       this.pullup = new Pullup(config)
       this._xscroll.plug(this.pullup)
       this.pullup.on('loading', (e) => {
-        this.$emit('pullup:loading', this.uuid)
+        this.$emit('pullup:loading', this)
       })
       this.pullup.on('statuschange', (val) => {
         this.pullupStatus = val.newVal
@@ -221,44 +266,12 @@ export default {
 
     this._xscroll.render()
   },
-  events: {
-    'pulldown:reset' (uuid) {
-      // set pulldown status to default
-      this.pulldownStatus = 'default'
-      if (uuid === this.uuid) {
-        this.pulldown.reset(() => {
-          // repaint
-          this.reset()
-        })
-      }
+  watch:{
+    height:function(newVal, oldVal){
+        this.props_height=newVal;
     },
-    'pullup:reset' (uuid) {
-      // set pulldown status to default
-      this.pullupStatus = 'default'
-      if (uuid === this.uuid) {
-        this.pullup.complete()
-        this.reset()
-      }
-    },
-    'pullup:done' (uuid) {
-      if (uuid === this.uuid) {
-        this._xscroll.unplug(this.pullup)
-      }
-    },
-    'scroller:reset' (uuid) {
-      if (uuid === this.uuid) {
-        this.reset()
-      }
-    },
-    'pullup:disable' (uuid) {
-      if (uuid === this.uuid) {
-        this.pullup.stop()
-      }
-    },
-    'pullup:enable' (uuid) {
-      if (uuid === this.uuid) {
-        this.pullup.restart()
-      }
+    pulldownStatus:function(newVal, oldVal){
+        this.props_pulldownStatus=newVal;
     }
   },
   beforeDestroy () {
@@ -272,6 +285,13 @@ export default {
     }
     this._xscroll.destroy()
     this._xscroll = null
+  },
+  data(){
+    return {
+      elHeight:"",
+      props_height:"",
+      props_pulldownStatus:"default"
+    }
   }
 }
 </script>

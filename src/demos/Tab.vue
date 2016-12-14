@@ -35,6 +35,20 @@
     <br/>
     <br/>
     <br/>
+    v-model方式同步index ↓↓↓
+    <br/><br/>
+    <tab :line-width=2 active-color='#fc378c' v-model="index2">
+      <tab-item class="vux-center" :selected="demo2 === item" v-for="item in list2" @click="demo2 = item">{{item}}</tab-item>
+    </tab>
+    <swiper v-model="index2" height="100px" :show-dots="false">
+      <swiper-item v-for="item in list2">
+        <div class="tab-swiper vux-center">{{item}} Container</div>
+      </swiper-item>
+    </swiper>
+    <br/>
+    <br/>
+    自定义事件由父组件控制数据的同步index ↓↓↓
+    <br/><br/>
     <tab :line-width=2 active-color='#fc378c' :index="index" @on-index-change="onIndexChange">
       <tab-item class="vux-center" :selected="demo2 === item" v-for="item in list2" @click="demo2 = item">{{item}}</tab-item>
     </tab>
@@ -44,6 +58,8 @@
       </swiper-item>
     </swiper>
     <br/>
+
+
     <x-button @click="addTab" :disabled="list2.length === 5" type="primary">Add tab item</x-button>
     <x-button @click="removeTab" :disabled="list2.length <= 2" type="primary">Remove tab item</x-button>
     <x-button @click="next" type="primary">Active next current: {{index}}</x-button>
@@ -144,7 +160,8 @@ export default {
       demo4: '即将上映',
       demo6: '已发货',
       demoDisabled: 'A',
-      index: 0
+      index: 0,
+      index2:0
     }
   },
   methods: {

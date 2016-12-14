@@ -1,5 +1,6 @@
 <template>
   <div class="vux-slider">
+    <input v-model="props_index" style="display:none">
     <div class="vux-swiper" :style="{height: xheight}">
       <slot></slot>
       <div class="vux-swiper-item" v-for="(item, index) in list" @click="clickListItem(item)" :data-index="index">
@@ -134,7 +135,11 @@ export default {
     index: {
       type: Number,
       default: 0
-    }
+    },
+    value: {
+      type: Number,
+      default: 0
+    },
   },
   data () {
     return {
@@ -157,10 +162,14 @@ export default {
           this.swiper.go(val)
         })
       }
+      this.$emit('input',val);
     },
     index (newIndex, oldIndex) {
       this.props_index=newIndex;
-    }
+    },
+    value(val){
+      this.props_index=val
+    },
   },
   beforeDestroy () {
     this.destroy()

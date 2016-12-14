@@ -5,9 +5,11 @@ FastClick.attach(document.body)
 import Vue from 'vue'
 import App from './App'
 
-//============================================= 移动端点击 ===================================
-import vueTap from 'v-tap'
-Vue.use(vueTap);
+//============================================= 插件 ===================================
+import ToastPlugin from './plugins/toast'
+
+Vue.use(ToastPlugin)
+
 
 //============================================= 路由 ===================================
 import router from './routers/router.js'
