@@ -5,7 +5,7 @@
       <x-button>submit</x-button>
       <x-button type="primary">primary</x-button>
       <x-button type="warn">Delete</x-button>
-      
+
       <divider>mini</divider>
       <x-button mini>submit</x-button>
       <x-button mini type="primary">primary</x-button>
@@ -17,7 +17,7 @@
       <divider>plain</divider>
       <x-button plain>submit</x-button>
       <x-button plain type="primary">primary</x-button>
-      
+
       <divider>disabled</divider>
       <x-button disabled>disable submit</x-button>
       <x-button type="primary" disabled>disable primary</x-button>

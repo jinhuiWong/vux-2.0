@@ -19,6 +19,9 @@ export default {
   components: {
     InlineDesc
   },
+  created(){
+    this.props_value=this.value;
+  },
   computed: {
     labelStyle () {
       let isHTML = /<\/?[^>]*>/.test(this.title)

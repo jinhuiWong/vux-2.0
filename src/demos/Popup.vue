@@ -27,13 +27,13 @@
       </div>
     </popup>
 
-<!--     <popup v-model="show2" height="200px" @on-first-show="resetScroller">
-      <scroller height="100px" lock-x style="border:1px solid red;" v-ref:scroller>
+    <popup v-model="show2" height="200px" @on-first-show="resetScroller">
+      <scroller height="100px" lock-x style="border:1px solid red;" ref="scroller">
         <div>
           <p v-for="i of 10">{{i}}</p>
         </div>
       </scroller>
-    </popup> -->
+    </popup>
 
     <popup v-model="show3">
       <div class="popup2">
@@ -78,14 +78,14 @@
 </template>
 
 <script>
-// import { Popup, Group, XSwitch, Scroller, Toast, Address, AddressChinaData } from '../components'
-import { Popup, Group, XSwitch, Toast } from '../components'
+import { Popup, Group, XSwitch, Scroller, Toast, Address, AddressChinaData } from '../components'
+// import { Popup, Group, XSwitch, Toast } from '../components'
 export default {
   components: {
     Popup,
     Group,
     XSwitch,
-    // Scroller,
+    Scroller,
     Toast,
     // Address
   },

@@ -100,6 +100,15 @@ export default {
     enableHorizontalSwiping: {
       type: Boolean,
       default: false
+    },
+    pullStatus: {
+      type: Object,
+      default () {
+        return {
+          down : 'default',
+          up : 'default'
+        }
+      }
     }
   },
   methods: {
@@ -122,7 +131,7 @@ export default {
   },
   computed: {
     styles () {
-      if (!this.props_height && this.elHeight && this.lockX) {
+      if (!this.props_height && this.elHeight==="" && this.lockX) {
         this.props_height = `${document.documentElement.clientHeight}px`
         this.reset()
       }
@@ -154,7 +163,7 @@ export default {
     });
     this.$on('pullup:reset',function(uuid) {
       // set pulldown status to default
-      this._pullupStatus = 'default'
+      this.props_pullupStatus = 'default'
       if (uuid === this.uuid) {
         this.pullup.complete()
         this.reset()
@@ -182,6 +191,7 @@ export default {
     });
   },
   mounted () {
+    this.elHeight=this.$el.style.height
     this.$el.setAttribute('id', `vux-scroller-${this.uuid}`)
     let content = null
     const slotChildren = this.$el.querySelector('.xs-container').childNodes
@@ -213,7 +223,10 @@ export default {
 
     if (this.usePulldown) {
       // if use slot=pulldown
-      let container = this.$el.querySelector('div[slot="pulldown"]')
+      //vue1.0
+      // let container = this.$el.querySelector('div[slot="pulldown"]')
+      // fix2.0
+      let container = this.$slots.pulldown ? this.$slots.pulldown[0].elm : false;
       let config = Object.assign(pulldownDefaultConfig(), this.pulldownConfig)
       if (container) {
         config.container = container
@@ -225,14 +238,15 @@ export default {
       })
       this.pulldown.on('statuschange', (val) => {
         this.props_pulldownStatus = val.newVal
+        this.pullStatus.down= val.newVal
       })
     }
 
     if (this.usePullup) {
       // if use slot=pullup
-      let container = this.$el.querySelector('div[slot="pullup"]')
+      // let container = this.$el.querySelector('div[slot="pullup"]')
+      let container = this.$slots.pullup ? this.$slots.pullup[0].elm : false;
       let config = Object.assign(pullupDefaultConfig(), this.pullupConfig)
-
       if (container) {
         config.container = container
       }
@@ -242,7 +256,8 @@ export default {
         this.$emit('pullup:loading', this)
       })
       this.pullup.on('statuschange', (val) => {
-        this.pullupStatus = val.newVal
+        this.props_pullupStatus = val.newVal
+        this.pullStatus.up= val.newVal
       })
     }
 
@@ -268,10 +283,13 @@ export default {
   },
   watch:{
     height:function(newVal, oldVal){
-        this.props_height=newVal;
+      this.props_height=newVal
     },
     pulldownStatus:function(newVal, oldVal){
-        this.props_pulldownStatus=newVal;
+      this.props_pulldownStatus=newVal
+    },
+    pullupStatus:function(newVal, oldVal){
+      this.props_pullupStatus=newVal
     }
   },
   beforeDestroy () {
@@ -290,7 +308,8 @@ export default {
     return {
       elHeight:"",
       props_height:"",
-      props_pulldownStatus:"default"
+      props_pulldownStatus:"default",
+      props_pullupStatus:"default"
     }
   }
 }

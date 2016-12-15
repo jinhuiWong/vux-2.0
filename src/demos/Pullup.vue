@@ -15,7 +15,7 @@
     </scroller>
 
     <divider>custom pullup html template</divider>
-    <scroller lock-x scrollbar-y use-pullup height="200px" :pullup-status.sync="pullupStatus" @pullup:loading="load3">
+    <scroller lock-x scrollbar-y use-pullup height="200px" :pullStatus="pullStatus" @pullup:loading="load3">
       <!--content slot-->
       <div class="box2">
         <p v-for="i in n3">placeholder {{i}}</p>
@@ -23,9 +23,9 @@
 
       <!--pullup slot-->
       <div slot="pullup" class="xs-plugin-pullup-container xs-plugin-pullup-up" style="position: absolute; width: 100%; height: 40px; bottom: -40px; text-align: center;">
-        <span v-show="pullupStatus === 'default'"></span>
-        <span class="pullup-arrow" v-show="pullupStatus === 'down' || pullupStatus === 'up'" :class="{'rotate': pullupStatus === 'up'}">↑</span>
-        <span v-show="pullupStatus === 'loading'"><spinner type="ios-small"></spinner></span>
+        <span v-show="pullStatus.up === 'default'"></span>
+        <span class="pullup-arrow" v-show="pullStatus.up === 'down' || pullStatus.up === 'up'" :class="{'rotate': pullStatus.up === 'up'}">↑</span>
+        <span v-show="pullStatus.up === 'loading'"><spinner type="ios-small"></spinner></span>
       </div>
     </scroller>
 
@@ -42,38 +42,45 @@ export default {
     Spinner
   },
   methods: {
-    load1 (uuid) {
+    load1 (that) {
       setTimeout(() => {
         this.n1 += 10
         setTimeout(() => {
-          this.$broadcast('pullup:reset', uuid)
+          // this.$broadcast('pullup:reset', uuid)
+          that.$emit('pullup:reset', that.uuid)
         }, 10)
       }, 2000)
     },
-    load2 (uuid) {
+    load2 (that) {
       setTimeout(() => {
         if (this.n2 === 30) {
-          this.$broadcast('pullup:done', uuid)
+          // this.$broadcast('pullup:done', uuid)
+          that.$emit('pullup:done', that.uuid)
         } else {
           this.n2 += 10
           setTimeout(() => {
-            this.$broadcast('pullup:reset', uuid)
+            // this.$broadcast('pullup:reset', uuid)
+            that.$emit('pullup:reset', that.uuid)
           }, 10)
         }
       }, 2000)
     },
-    load3 (uuid) {
+    load3 (that) {
       setTimeout(() => {
         this.n3 += 10
         setTimeout(() => {
-          this.$broadcast('pullup:reset', uuid)
+          // this.$broadcast('pullup:reset', uuid)
+          that.$emit('pullup:reset', that.uuid)
         }, 10)
       }, 2000)
     }
   },
   data () {
     return {
-      pullupStatus: 'default',
+      pullStatus:{
+        up:'default'
+      },
+      // pullupStatus: 'default',
       n1: 10,
       n2: 10,
       n3: 10,

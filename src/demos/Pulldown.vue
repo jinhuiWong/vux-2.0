@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <divider>Pull Down to Refresh</divider>
     <scroller lock-x scrollbar-y use-pulldown height="200px" @pulldown:loading="load">
       <div class="box2">
@@ -15,7 +16,8 @@
     </scroller>
 
     <divider>custom pulldown html template</divider>
-    <scroller lock-x scrollbar-y use-pulldown height="200px" :pulldown-status.sync="pulldownStatus" @pulldown:loading="load">
+
+    <scroller lock-x scrollbar-y use-pulldown height="200px" :pullStatus="pullStatus" @pulldown:loading="load">
       <!--content slot-->
       <div class="box2">
         <p v-for="i in 80">placeholder {{i}}</p>
@@ -23,12 +25,12 @@
 
       <!--pulldown slot-->
       <div slot="pulldown" class="xs-plugin-pulldown-container xs-plugin-pulldown-down" style="position: absolute; width: 100%; height: 60px; line-height: 60px; top: -60px; text-align: center;">
-        <span v-show="pulldownStatus === 'default'"></span>
-        <span class="pulldown-arrow" v-show="pulldownStatus === 'down' || pulldownStatus === 'up'" :class="{'rotate': pulldownStatus === 'up'}">↓</span>
-        <span v-show="pulldownStatus === 'loading'"><spinner type="ios-small"></spinner></span>
+        <span v-show="pullStatus.down === 'default'"></span>
+        <span class="pulldown-arrow" v-show="pullStatus.down === 'down' || pullStatus.down === 'up'" :class="{'rotate': pullStatus.down === 'up'}">↓</span>
+        <span v-show="pullStatus.down === 'loading'"><spinner type="ios-small"></spinner></span>
       </div>
     </scroller>
-
+   {{pullStatus.down}}
 
   </div>
 </template>
@@ -51,7 +53,10 @@ export default {
   },
   data () {
     return {
-      pulldownStatus: 'default'
+      // pulldownStatus: 'default',
+      pullStatus:{
+        down:'default'
+      }
     }
   }
 }

@@ -1,41 +1,41 @@
 <template>
   <div>
     <group-title>默认，不设置默认值时选中第一个</group-title>
-    <picker :data='years' :value.sync='year1' @on-change='change'></picker>
+    <picker :data='years' :value='year1' @on-change='change'></picker>
     <br>
     <group-title>异步加载及动态改变数据</group-title>
-    <picker :data='years001' :value.sync='year001' @on-change='change'></picker>
+    <picker :data='years001' :value='year001' @on-change='change'></picker>
     <br>
     <group>
-      <cell title="current value" :value="year001 | json"></cell>
+      <cell title="current value" :value="val1"></cell>
     </group>
     <x-button type="primary" @click="changeValue([['1','3','5','7','9','11'],['2','3','4','5'],['a','b','c']])">Set Data1</x-button>
     <x-button type="primary" @click="changeValue([['1','3','5','7','9','11'],['2','3','4','5']])">Set Data1</x-button>
     <x-button type="primary" @click="changeValue([['2','4','6','8','10','11']])">Set Data2</x-button>
     <br>
     <group-title>设置默认值时</group-title>
-    <picker :data='years' :value.sync='year2' @on-change='change'></picker>
+    <picker :data='years' :value='year2' @on-change='change'></picker>
     <br>
     <group-title>双向绑定</group-title>
-    <picker :data='years' :value.sync='year3' @on-change='change3'></picker>
-    <select v-model='year5'>
-      <option v-for='one in years[0]' value='{{one.value}}'>{{one.name}}</option>
+    <picker :data="years" :value="year3" @on-change='change3'></picker>
+    <select v-model="year5">
+      <option v-for='one in years[0]' :value="one.value">{{one.name}}</option>
     </select>
     <br>
     <group-title>非联动多列</group-title>
-    <picker :data='years1' :value.sync='year4' @on-change='change'></picker>
+    <picker :data='years1' :value='year4' @on-change='change'></picker>
     <br>
     <group-title>五列</group-title>
-    <picker :data='year6' :value.sync='year6Value' @on-change='change'></picker>
+    <picker :data='year6' :value='year6Value' @on-change='change'></picker>
     <br>
     <group-title>地区联动: 当前值{{year7Value}}</group-title>
-    <picker :data='year7' :columns=3 :value.sync='year7Value' @on-change='change'></picker>
+    <picker :data="year7" :columns="3" :value="year7Value" @on-change="change"></picker>
     <x-button @click="setData1" type="primary">set Value to ["USA", "usa002", "0005"]</x-button>
     <x-button @click="setData2" type="primary">set Value to ["china", "china002", "gz"]</x-button>
     <x-button @click="setList" type="primary">set List</x-button>
     <br>
     <group-title>3列的数据，只显示两列</group-title>
-    <picker :data='year7' :fixed-columns="2" :columns=3 :value.sync='year8Value' @on-change='change'></picker>
+    <picker :data='year7' :fixed-columns="2" :columns=3 :value='year8Value' @on-change='change'></picker>
   </div>
 </template>
 
@@ -50,7 +50,7 @@ for (var i = 2000; i <= 2030; i++) {
   })
 }
 export default {
-  ready () {},
+  mounted () {},
   components: {
     Picker,
     GroupTitle,
@@ -63,10 +63,14 @@ export default {
       this.years001 = value
     },
     change (value) {
+      this.year001=value
       console.log('new Value', value)
     },
     change3 (value) {
-      this.year5 = value[0]
+      debugger
+      this.year5 = value[0]+''
+      console.log(this.year5)
+      console.log('gg')
     },
     setData1 () {
       this.year7Value = ['USA', 'usa002', '0005']
@@ -82,12 +86,17 @@ export default {
       })
     }
   },
-  computed: {},
+  computed: {
+    val1(){
+      return this.year001.join("-")
+    }
+  },
   watch: {
     year5: {
       handler (val) {
         this.year3[0] = val
-        this.year3.$set(0, val)
+        // this.year3.$set(0, val)
+        this.$set(this.year3,0,val)
       },
       deep: true
     },
@@ -105,7 +114,7 @@ export default {
       year2: ['2002'],
       year3: ['2005'],
       year4: ['2002', '4'],
-      year5: ['2005'],
+      year5: '2005',
       year6: [
         ['你', '我', '他'],
         ['you', 'I', 'him'],

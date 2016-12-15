@@ -16,13 +16,19 @@ const Tabbar = resolve => require(['../demos/Tabbar'], resolve)
 const TabbarLink = resolve => require(['../demos/TabbarLink'], resolve)
 const Flexbox = resolve => require(['../demos/Flexbox'], resolve)
 const Popup = resolve => require(['../demos/Popup'], resolve)
+const PopupPicker = resolve => require(['../demos/Popup-picker'], resolve)
 const Switch = resolve => require(['../demos/Switch'], resolve)
 const Toast = resolve => require(['../demos/Toast'], resolve)
 const Scroller = resolve => require(['../demos/Scroller'], resolve)
+const ScrollerFull = resolve => require(['../demos/Scroller-full'], resolve)
+const ScrollerHeader = resolve => require(['../demos/Scroller-header'], resolve)
+const ScrollerSwiper = resolve => require(['../demos/Scroller-swiper'], resolve)
 const Pulldown = resolve => require(['../demos/Pulldown'], resolve)
 const Pullup = resolve => require(['../demos/Pullup'], resolve)
 const PulldownPullup = resolve => require(['../demos/PulldownPullup'], resolve)
 const Spinner = resolve => require(['../demos/Spinner'], resolve)
+const Masker = resolve => require(['../demos/Masker'], resolve)
+const Picker = resolve => require(['../demos/Picker'], resolve)
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
 
 const router = new VueRouter({
@@ -40,13 +46,19 @@ const router = new VueRouter({
         { path: rootPath + 'component/tabbar-link', component: TabbarLink , name: 'tabbarLink'},
         { path: rootPath + 'component/flexbox', component: Flexbox , name: 'flexbox'},
         { path: rootPath + 'component/popup', component: Popup , name: 'popup'},
+        { path: rootPath + 'component/popup-picker', component: PopupPicker , name: 'popupPicker'},
         { path: rootPath + 'component/switch', component: Switch , name: 'switch'},
         { path: rootPath + 'component/toast', component: Toast , name: 'toast'},
         { path: rootPath + 'component/scroller', component: Scroller , name: 'scroller'},
+        { path: rootPath + 'component/scroller/full', component: ScrollerFull , name: 'scrollerFull'},
+        { path: rootPath + 'component/scroller/header', component: ScrollerHeader , name: 'scrollerheader'},
+        { path: rootPath + 'component/scroller-swiper', component: ScrollerSwiper , name: 'scrollerSwiper'},
         { path: rootPath + 'component/pulldown', component: Pulldown , name: 'pulldown'},
         { path: rootPath + 'component/pullup', component: Pullup , name: 'pullup'},
         { path: rootPath + 'component/pulldown-pullup', component: PulldownPullup , name: 'pulldown-pullup'},
         { path: rootPath + 'component/spinner', component: Spinner , name: 'spinner'},
+        { path: rootPath + 'component/masker', component: Masker , name: 'masker'},
+        { path: rootPath + 'component/picker', component: Picker , name: 'picker'},
         //找不到页面就返回404页面
         {
             path: '*',

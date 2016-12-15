@@ -1,7 +1,7 @@
 <template>
   <div class="vux-picker">
     <flexbox :gutter="0">
-      <flexbox-item v-for="(index, one) in data" style="margin-left:0;">
+      <flexbox-item v-for="(one, index) in props_data" style="margin-left:0;">
         <div class="vux-picker-item" :id="'vux-picker-' + uuid + '-' + index"></div>
       </flexbox-item>
     </flexbox>
@@ -19,15 +19,17 @@ export default {
     FlexboxItem
   },
   created () {
+    this.props_data=this.data
+    this.props_value=this.value
     if (this.columns !== 0) {
       const length = this.columns
-      this.store = new Manager(this.data, length, this.fixedColumns)
-      this.data = this.store.getColumns(this.value)
+      this.store = new Manager(this.props_data, length, this.fixedColumns)
+      this.props_data = this.store.getColumns(this.props_value)
     }
   },
-  ready () {
+  mounted () {
     this.$nextTick(() => {
-      this.render(this.data, this.value)
+      this.render(this.props_data, this.value)
     })
   },
   props: {
@@ -53,16 +55,17 @@ export default {
       return `#vux-picker-${this.uuid}-${i}`
     },
     render (data, value) {
-      this.count = this.data.length
+      this.count = this.props_data.length
       const _this = this
       if (!data || !data.length) {
         return
       }
-      let count = this.data.length
+      let count = this.props_data.length
       // set first item as value
       if (value.length < count) {
         for (let i = 0; i < count; i++) {
-          _this.value.$set(i, data[i][0].value || data[i][0])
+          // _this.value.$set(i, data[i][0].value || data[i][0])
+          _this.$set( _this.value, i, data[i][0].value || data[i][0] )
         }
       }
 
@@ -80,7 +83,8 @@ export default {
           defaultValue: value[i] || data[i][0].value,
           itemClass: _this.item_class,
           onSelect (value) {
-            _this.value.$set(i, value)
+            // _this.value.$set(i, value)
+            _this.$set(_this.value,i,value)
             if (!this.columns || (this.columns && _this.getValue().length === _this.store.count)) {
               _this.$emit('on-change', _this.getValue())
             }
@@ -113,17 +117,19 @@ export default {
         data: list,
         itemClass: _this.item_class,
         onSelect (value) {
-          _this.value.$set(i, value)
+          // _this.value.$set(i, value)
+          _this.$set(_this.props_value,i,value)
           _this.$emit('on-change', _this.getValue())
           _this.renderChain(i + 1)
         }
       })
-      this.value.$set(i, list[0].value)
+      // this.value.$set(i, list[0].value)
+      this.$set(this.props_value,i,list[0].value)
       this.renderChain(i + 1)
     },
     getValue () {
       let data = []
-      for (let i = 0; i < this.data.length; i++) {
+      for (let i = 0; i < this.props_data.length; i++) {
         if (this.scroller[i]) {
           data.push(this.scroller[i].value)
         } else {
@@ -142,18 +148,23 @@ export default {
     return {
       scroller: [],
       count: 0,
-      uuid: Math.random().toString(36).substring(3, 8)
+      uuid: Math.random().toString(36).substring(3, 8),
+      props_data:[],
+      props_value:[]
     }
   },
   watch: {
-    value (val, oldVal) {
+    value(val){
+      this.props_value=val
+    },
+    props_value (val, oldVal) {
       // render all the scroller for chain datas
       if (this.columns !== 0) {
         if (val.length > 0) {
           if (JSON.stringify(val) !== JSON.stringify(oldVal)) {
-            this.data = this.store.getColumns(val)
+            this.props_data = this.store.getColumns(val)
             this.$nextTick(function () {
-              this.render(this.data, val)
+              this.render(this.props_data, val)
             })
           }
         }
@@ -165,17 +176,20 @@ export default {
         }
       }
     },
-    data (newData) {
+    data(newData){
+      this.props_data=newData
+    },
+    props_data (newData) {
       if (Object.prototype.toString.call(newData[0]) === '[object Array]') {
         this.$nextTick(() => {
-          this.render(newData, this.value)
+          this.render(newData, this.props_value)
           // emit on-change after rerender
           this.$nextTick(() => {
             this.emitValueChange(this.getValue())
 
-            if (JSON.stringify(this.getValue()) !== JSON.stringify(this.value)) {
+            if (JSON.stringify(this.getValue()) !== JSON.stringify(this.props_value)) {
               if (!this.columns || (this.columns && this.getValue().length === this.store.count)) {
-                this.value = this.getValue()
+                this.props_value = this.getValue()
               }
             }
           })
@@ -187,7 +201,7 @@ export default {
           }
           const length = this.columns
           this.store = new Manager(newData, length, this.fixedColumns)
-          this.data = this.store.getColumns(this.value)
+          this.props_data = this.store.getColumns(this.props_value)
         }
       }
     }

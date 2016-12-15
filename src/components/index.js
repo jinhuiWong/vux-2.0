@@ -19,7 +19,7 @@ import XButton from './x-button'
 import Swiper from './swiper'
 import SwiperItem from './swiper-item'
 import Sticky from './sticky'
-// import Picker from './picker'
+import Picker from './picker'
 // import Datetime from './datetime'
 import Popup from './popup'
 // import Range from './range'
@@ -48,7 +48,7 @@ import Scroller from './scroller'
 // import WechatEmotion from './wechat-emotion'
 // import Search from './search'
 // import DateFormatter from './datetime/format'
-// import Masker from './masker'
+import Masker from './masker'
 // import Countdown from './countdown'
 // import FriendlyTime from '../filters/friendly-time'
 import XHeader from './x-header'
@@ -93,7 +93,7 @@ const vux = {
   Swiper,
   SwiperItem,
   Sticky,
-  // Picker,
+  Picker,
   // Datetime,
   Popup,
   // Range,
@@ -122,7 +122,7 @@ const vux = {
   // WechatEmotion,
   // Search,
   // DateFormatter,
-  // Masker,
+  Masker,
   // Countdown,
   // FriendlyTime,
   XHeader,

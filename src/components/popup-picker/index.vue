@@ -80,6 +80,9 @@ export default {
     },
     show: Boolean
   },
+  mounted(){
+    this.$emit('getNameValues',this.getNameValues());
+  },
   methods: {
     getNameValues () {
       return value2name(this.value, this.data)

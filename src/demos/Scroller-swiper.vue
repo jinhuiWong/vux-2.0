@@ -18,10 +18,11 @@ export default {
     Swiper
   },
   methods: {
-    load (uuid) {
-      const _this = this
+    load (that) {
+      // const _this = this
       setTimeout(function () {
-        _this.$broadcast('pulldown:reset', uuid)
+        // _this.$broadcast('pulldown:reset', uuid)
+        that.$emit('pulldown:reset',that.uuid)
       }, 2000)
     }
   },
