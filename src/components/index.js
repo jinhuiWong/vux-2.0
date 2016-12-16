@@ -26,8 +26,8 @@ import Popup from './popup'
 // import Actionsheet from './actionsheet'
 // import Clocker from './clocker'
 // import Rater from './rater'
-// import PopupPicker from './popup-picker'
-// import Address from './address'
+import PopupPicker from './popup-picker'
+import XAddress from './x-address'
 import Toast from './toast'
 import Loading from './loading'
 // import Alert from './alert'
@@ -39,7 +39,7 @@ import Spinner from './spinner'
 import Icon from './icon'
 // import Circle from './circle'
 // import ColorPicker from './color-picker'
-// import AddressChinaData from './address/list.json'
+import AddressChinaData from './x-address/list.json'
 import Divider from './divider'
 // import Blur from './blur'
 // import Countup from './countup'
@@ -100,8 +100,8 @@ const vux = {
   // Actionsheet,
   // Clocker,
   // Rater,
-  // PopupPicker,
-  // Address,
+  PopupPicker,
+  XAddress,
   Toast,
   Loading,
   // Alert,
@@ -113,7 +113,7 @@ const vux = {
   Icon,
   // Circle,
   // ColorPicker,
-  // AddressChinaData,
+  AddressChinaData,
   Divider,
   // Blur,
   // Countup,

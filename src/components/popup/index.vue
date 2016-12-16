@@ -1,6 +1,6 @@
 <template>
-    <transition  name="vux-popup">
-      <div v-show="props_show" :style="{height:height}" class="vux-popup">
+    <transition  name="vux-popup" >
+      <div v-show="props_show" :style="{height:height}" class="vux-popup vux-popup-dialog">
         <!-- 此处input只做双向数据绑定用(props 的value 属性必须有)-->
         <input v-model="props_show" style="display:none">
         <slot></slot>
@@ -93,7 +93,7 @@ export default {
 
 <style>
 .vux-popup {
-  border-top: 2px solid #04BE02;
+  /* border-top: 2px solid #04BE02; */
 }
 .vux-popup-dialog {
   position: fixed;
@@ -102,6 +102,7 @@ export default {
   width: 100%;
   background: #eee;
   z-index: 101;
+  /* transition: transform .3s */
 }
 .vux-popup-mask {
   display: block;

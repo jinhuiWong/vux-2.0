@@ -1,6 +1,7 @@
 // not a good way but works well
 window.__$vuxPopups = window.__$vuxPopups || {}
 const popupDialog = function (option) {
+  debugger
   this.uuid = Math.random().toString(36).substring(3, 8)
   this.params = {}
   this.isShow = false

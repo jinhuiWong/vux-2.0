@@ -1,7 +1,7 @@
 <template>
   <div>
     <group title="single column">
-      <popup-picker :title="title1" :data="list1" :value.sync="value1" @on-show="onShow" @on-hide="onHide"></popup-picker>
+      <popup-picker :title="title1" :data="list1" :value="value1" @on-show="onShow" @on-hide="onHide"></popup-picker>
     </group>
     <br>
     <div class="picker-buttons">
@@ -9,14 +9,15 @@
       <x-button type="primary" @click="changeList11">push方式更改列表</x-button>
     </div>
     <group title="double columns">
-      <popup-picker :title="title2" :data="list2" :value.sync="value2"></popup-picker>
+      <popup-picker :title="title2" :data="list2" :value="value2"></popup-picker>
     </group>
     <br>
 
     <group title="chained columns">
-      <popup-picker :title="title3" :data="list3" :columns="3" :value.sync="value3" ref="picker3"></popup-picker>
-      <cell title="获取值对应的文字" :value="picker3Namevalue"></cell>
-      <popup-picker :title="title4" :data="list3" :columns="3" :value.sync="value4" show-name></popup-picker>
+      <popup-picker :title="title3" :data="list3" :columns="3" :value="value3" ref="picker3" @on-hide="onPopPickerHide"></popup-picker>
+      <cell title="获取值对应的值" :value="value8"></cell>
+      <cell title="获取值对应的文字" :value="nameValues"></cell>
+      <popup-picker :title="title4" :data="list3" :columns="3" :value="value4" show-name></popup-picker>
     </group>
 
     <br>
@@ -25,20 +26,15 @@
     </div>
 
     <br>
-    <divider>Control the visibility of popup-picker</divider>
+    <divider ref="kkk">Control the visibility of popup-picker 隐藏cell</divider>
     <div style="margin: 0 15px;">
-      <x-button @click="showPopupPicker = true" type="primary">Show PopupPicker. value: {{value5 | json}}</x-button>
+      <x-button @click="onShowPopupPicker(true)" type="primary">Show PopupPicker. value: {{value5}}</x-button>
     </div>
     <group>
-      <popup-picker :show.sync="showPopupPicker" :show-cell="false" title="TEST" :data="[['1', '2', '3', '4', '5']]" :value.sync="value5"></popup-picker>
+      <popup-picker :show="showPopupPicker" title="TEST" :showCell="false" :data="[['1', '2', '3', '4', '5']]" :value="value5" @on-shadow-change="changeList20" @on-ok="getValue" @on-hide="showPopupPicker=false"></popup-picker>
     </group>
 
     <br>
-    <group title="隐藏时不影响其他popup-picker的mask">
-      <x-switch title="ishide popup-picker" :value.sync="switch6"></x-switch>
-      <popup-picker v-if="!switch6" :show.sync="showPopupPicker" title="显示值" :data="['我不会影响遮罩层'.split('')]" :value.sync="value6"></popup-picker>
-    </group>
-
     <br>
     <br>
 
@@ -59,14 +55,19 @@ export default {
     XSwitch
   },
   methods: {
+    //on-hide(ture是确定false是取消，当前的值)
+    onPopPickerHide(closeType,val){
+      if(closeType) this.value8 = val.join('')
+      this.nameValues=this.$refs.picker3.getNameValues()
+    },
     changeList10 () {
       this.list1 = [['小米1', 'iPhone1', '华为1', '情怀1', '三星1', '其他1', '不告诉你1']]
     },
     changeList11 () {
       this.list1[0].push('我是push条目')
     },
-    changeList20 () {
-
+    changeList20 (val) {
+      console.log('你当前选择的是：'+val)
     },
     changeList21 () {
       this.list3.push({
@@ -80,19 +81,20 @@ export default {
     },
     onHide (type) {
       console.log('on hide', type)
-    }
-  },
-  computed : {
-    picker3Namevalue(){
-      // return this.$refs.picker3.getNameValues()
+    },
+    onShowPopupPicker(is){
+      this.showPopupPicker=is
+    },
+    getValue(val){
+      this.value5=val;
     }
   },
   mounted(){
-    debugger
-    console.log(this.$refs.picker3.getNameValues())
+    // this.NameValues=this.$refs.picker3.getNameValues()
   },
   data () {
     return {
+      nameValues: '',
       title1: '手机机型',
       title2: '详细机型',
       title3: '联动显示值',
@@ -163,7 +165,8 @@ export default {
       showPopupPicker: false,
       value5: ['2'],
       switch6: false,
-      value6: []
+      value6: [],
+      value8:''
     }
   }
 }

@@ -43,7 +43,8 @@ export default {
   methods: {
     onClick () {
       // go(this.link, this.$router);
-      this.$router.push(this.link);
+      this.link ? this.$router.push(this.link) : false
+      this.$emit("click")
     }
   }
 }
