@@ -53,7 +53,7 @@ import Masker from './masker'
 // import FriendlyTime from '../filters/friendly-time'
 import XHeader from './x-header'
 // import Panel from './panel'
-// import InlineCalendar from './inline-calendar'
+import InlineCalendar from './inline-calendar'
 import Badge from './badge'
 // import Dialog from './dialog'
 // import Card from './card'
@@ -137,7 +137,7 @@ const vux = {
   // Panel,
   // ButtonTab,
   // ButtonTabItem,
-  // InlineCalendar,
+  InlineCalendar,
   Badge,
   // Dialog,
   // Card,

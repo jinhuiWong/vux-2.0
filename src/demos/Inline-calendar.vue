@@ -20,21 +20,21 @@
   :disable-future="disableFuture">
   </inline-calendar>
   <group title="control days" style="margin-top: 30px;">
-    <switch :value.sync="disablePast" title="Disable Past"></switch>
-    <switch :value.sync="disableFuture" title="Disable Future"></switch>
-    <switch :value.sync="showLastMonth" title="Show Last Month"></switch>
-    <switch :value.sync="showNextMonth" title="Show Next Month"></switch>
-    <switch :value.sync="return6Rows" inline-desc="if not, the calendar's height would change" title="Always show 6 rows"></switch>
-    <switch :value.sync="highlightWeekend" title="highlight weekend"></switch>
+    <x-switch :value.sync="disablePast" title="Disable Past"></x-switch>
+    <x-switch :value.sync="disableFuture" title="Disable Future"></x-switch>
+    <x-switch :value.sync="showLastMonth" title="Show Last Month"></x-switch>
+    <x-switch :value.sync="showNextMonth" title="Show Next Month"></x-switch>
+    <x-switch :value.sync="return6Rows" inline-desc="if not, the calendar's height would change" title="Always show 6 rows"></x-switch>
+    <x-switch :value.sync="highlightWeekend" title="highlight weekend"></x-switch>
     <cell title="current value" :value="value"></cell>
   </group>
   <group title="control navs">
-    <switch :value.sync="hideHeader" title="Hide header"></switch>
-    <switch :value.sync="hideWeekList" title="Hide week list"></switch>
-    <switch :value.sync="changeWeeksList" title="Change weeks list"></switch>
+    <x-switch :value.sync="hideHeader" title="Hide header"></x-switch>
+    <x-switch :value.sync="hideWeekList" title="Hide week list"></x-switch>
+    <x-switch :value.sync="changeWeeksList" title="Change weeks list"></x-switch>
   </group>
   <group title="replace text">
-    <switch :value.sync="replace" title="Replace date text"></switch>
+    <x-switch :value.sync="replace" title="Replace date text"></x-switch>
   </group>
   <br>
   <div style="margin: 15px;">
@@ -46,7 +46,7 @@
   </div>
   <br>
   <group title="custom every day cell">
-    <switch :value.sync="useCustomFn" inline-desc="Add red dot for dates with 8" title="add custom contents in day cell"></switch>
+    <x-switch :value.sync="useCustomFn" inline-desc="Add red dot for dates with 8" title="add custom contents in day cell"></x-switch>
   </group>
 
   <br>
@@ -72,7 +72,7 @@
 
 <script>
 import InlineCalendar from '../components/inline-calendar'
-import { Group, Switch, Radio, XButton, Cell, Divider } from '../components'
+import { Group, XSwitch, Radio, XButton, Cell, Divider } from '../components'
 
 module.exports = {
   data () {
@@ -115,7 +115,7 @@ module.exports = {
   components: {
     InlineCalendar,
     Group,
-    Switch,
+    XSwitch,
     Radio,
     XButton,
     Cell,

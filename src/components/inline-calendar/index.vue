@@ -17,20 +17,20 @@
     <table>
       <thead v-show="!hideWeekList">
         <tr>
-          <th v-for="(index, week) in weeksList" class="week is-week-list-{{index}}">{{week}}</th>
+          <th v-for="(week, index) in weeksList" class="week" :class=" 'is-week-list-' + index ">{{week}}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(k1,day) in days">
+        <tr v-for="(day,k1) in days">
           <td
           :data-date="formatDate(year, month, child)"
           :data-current="value"
-          v-for="(k2,child) in day"
+          v-for="(child,k2) in day"
           :class="buildClass(k2, child, formatDate(year, month, child) === value && !child.isLastMonth && !child.isNextMonth)"
           @click="select(k1,k2,$event)">
-            <span
+            <span 
             v-show="(!child.isLastMonth && !child.isNextMonth ) || (child.isLastMonth && showLastMonth) || (child.isNextMonth && showNextMonth)">{{replaceText(child.day, formatDate(year, month, child))}}</span>
-            {{{customSlotFn(k1, k2, child)}}}
+            <div v-html="customSlotFn(k1, k2, child)"></div>
           </td>
         </tr>
       </tbody>
@@ -55,7 +55,7 @@ export default {
       months: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
     }
   },
-  ready () {
+  mounted () {
     this.value = this.convertDate(this.value)
     this.render(this.renderMonth[0], this.renderMonth[1] - 1)
   },
