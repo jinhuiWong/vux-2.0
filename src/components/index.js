@@ -1,18 +1,18 @@
 /* only for building vux.css */
 import Style from '../styles/index.vue' // eslint-disable-line
 
-// import Radio from './radio'
+import Radio from './radio'
 // import DevTip from './dev-tip'
 // import XInput from './x-input'
 // import XNumber from './x-number'
 import Cell from './cell'
 import InlineDesc from './inline-desc'
-// import Checklist from './checklist'
+import Checklist from './checklist'
 import XSwitch from './x-switch'
 // import XTextarea from './x-textarea'
 import Group from './group'
 import GroupTitle from './group-title'
-// import Box from './box'
+import Box from './box'
 // import Tip from './tip'
 // import Selector from './selector'
 import XButton from './x-button'
@@ -20,12 +20,12 @@ import Swiper from './swiper'
 import SwiperItem from './swiper-item'
 import Sticky from './sticky'
 import Picker from './picker'
-// import Datetime from './datetime'
+import Datetime from './datetime'
 import Popup from './popup'
-// import Range from './range'
+import Range from './range'
 // import Actionsheet from './actionsheet'
 // import Clocker from './clocker'
-// import Rater from './rater'
+import Rater from './rater'
 import PopupPicker from './popup-picker'
 import XAddress from './x-address'
 import Toast from './toast'
@@ -35,10 +35,10 @@ import Loading from './loading'
 // import Progress from './progress'
 // import XImg from './x-img'
 import Spinner from './spinner'
-// import Calendar from './calendar'
+import Calendar from './calendar'
 import Icon from './icon'
 // import Circle from './circle'
-// import ColorPicker from './color-picker'
+import ColorPicker from './color-picker'
 import AddressChinaData from './x-address/list.json'
 import Divider from './divider'
 // import Blur from './blur'
@@ -63,7 +63,7 @@ import ViewBox from './view-box'
 // import Popover from './popover'
 
 // import { ButtonTab, ButtonTabItem } from './button-tab'
-// import { Checker, CheckerItem } from './checker'
+import { Checker, CheckerItem } from './checker'
 import { Flexbox, FlexboxItem } from './flexbox'
 // import { Step, StepItem } from './step'
 // import { Timeline, TimelineItem } from './timeline'
@@ -71,15 +71,15 @@ import { Tabbar, TabbarItem } from './tabbar'
 import { Tab, TabItem } from './tab'
 
 const vux = {
-  // Radio,
+  Radio,
   Group,
   // DevTip,
   // XInput,
   GroupTitle,
   // XNumber,
-  // Checklist,
+  Checklist,
   XSwitch,
-  // Box,
+  Box,
   // Tip,
   // Selector,
   Cell,
@@ -94,12 +94,12 @@ const vux = {
   SwiperItem,
   Sticky,
   Picker,
-  // Datetime,
+  Datetime,
   Popup,
-  // Range,
+  Range,
   // Actionsheet,
   // Clocker,
-  // Rater,
+  Rater,
   PopupPicker,
   XAddress,
   Toast,
@@ -109,10 +109,10 @@ const vux = {
   // Progress,
   // XImg,
   Spinner,
-  // Calendar,
+  Calendar,
   Icon,
   // Circle,
-  // ColorPicker,
+  ColorPicker,
   AddressChinaData,
   Divider,
   // Blur,
@@ -126,8 +126,8 @@ const vux = {
   // Countdown,
   // FriendlyTime,
   XHeader,
-  // Checker,
-  // CheckerItem,
+  Checker,
+  CheckerItem,
   // Timeline,
   // TimelineItem,
   // Step,

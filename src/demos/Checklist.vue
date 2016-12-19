@@ -1,18 +1,18 @@
 <template>
   <div>
-    <checklist title="default checklist" :options="commonList" :value.sync="checklist001" @on-change="change"></checklist>
+    <checklist title="default checklist" :options="commonList" :value="checklist001" @on-change="change"></checklist>
 
-    <checklist title="preselect China and Japan" :options="commonList" :value.sync="checklist002" @on-change="change"></checklist>
+    <checklist title="preselect China and Japan" :options="commonList" :value="checklist002" @on-change="change"></checklist>
 
-    <checklist title="set max=2" :options="commonList" :value.sync="checklist003" :max=2 @on-change="change"></checklist>
+    <checklist title="set max=2" :options="commonList" :value="checklist003" :max=2 @on-change="change"></checklist>
 
-    <checklist title="set required=false and no min-error will show" :options="commonList" :value.sync="checklist004" :max=2 :required=false @on-change="change"></checklist>
+    <checklist title="set required=false and no min-error will show" :options="commonList" :value="checklist004" :max=2 :required=false @on-change="change"></checklist>
 
-    <checklist title="set random order" random-order :options="checklist005" :value.sync="checklist005Value" @on-change="change"></checklist>
+    <checklist title="set random order" random-order :options="checklist005" :value="checklist005Value" @on-change="change"></checklist>
 
-    <checklist title="Option Array with key and value(key must be string)" :options="objectList" :value.sync="objectListValue" @on-change="change"></checklist>
+    <checklist title="Option Array with key and value(key must be string)" :options="objectList" :value="objectListValue" @on-change="change"></checklist>
 
-    <checklist title="Async list" :max="3" :options="asyncList" :value.sync="asyncListValue" @on-change="change"></checklist>
+    <checklist title="Async list" :max="3" :options="asyncList" :value="asyncListValue" @on-change="change"></checklist>
 
     <divider>Reference</divider>
     <group title="See also">
@@ -25,7 +25,7 @@
 import { Group, Checklist, Cell, Divider } from '../components'
 
 export default {
-  ready () {
+  mounted () {
     setTimeout(() => {
       this.asyncList = ['A', 'B', 'C', 'D']
     }, 3000)

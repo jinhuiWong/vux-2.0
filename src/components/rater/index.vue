@@ -1,14 +1,18 @@
 <template>
   <div class="vux-rater">
-    <a class="vux-rater-box" v-for="i in max" @click="handleClick(i)" :class="{'is-active':value > i}" :style="{color: colors && colors[i] ? colors[i] : '#ccc',marginRight:margin+'px',fontSize: fontSize + 'px', width: fontSize + 'px', height: fontSize + 'px', lineHeight: fontSize + 'px'}">
-      <span class="vux-rater-inner">{{star}}<span class="vux-rater-outer" :style="{color: activeColor, width: cutPercent + '%'}" v-if="cutPercent > 0 && cutIndex === i">{{star}}</span></span>
+    <input v-model="props_value" style="display:none">
+    <a class="vux-rater-box" v-for="i in max" @click="handleClick(i-1)" :class="{'is-active':props_value > i-1}" :style="{color: colors && colors[i-1] ? colors[i-1] : '#ccc',marginRight:margin+'px',fontSize: fontSize + 'px', width: fontSize + 'px', height: fontSize + 'px', lineHeight: fontSize + 'px'}">
+      <span class="vux-rater-inner">{{star}}<span class="vux-rater-outer" :style="{color: activeColor, width: cutPercent + '%'}" v-if="cutPercent > 0 && cutIndex === i-1">{{star}}</span></span>
     </a>
   </div>
 </template>
 
 <script>
 export default {
-  ready () {
+  created(){
+    this.props_value=this.value
+  },
+  mounted () {
     this.updateStyle()
   },
   props: {
@@ -40,7 +44,7 @@ export default {
   },
   computed: {
     sliceValue () {
-      const _val = this.value.toString().split('.')
+      const _val = this.props_value.toString().split('.')
       return _val.length === 1 ? [_val[0], 0] : _val
     },
     cutIndex () {
@@ -53,20 +57,20 @@ export default {
   methods: {
     handleClick (i, force) {
       if (!this.disabled || force) {
-        if (this.value === i + 1) {
-          this.value = i
+        if (this.props_value === i +1 ) {
+          this.props_value = i
           this.updateStyle()
         } else {
-          this.value = i + 1
+          this.props_value = i +1
         }
       }
     },
     updateStyle () {
       for (var j = 0; j < this.max; j++) {
-        if (j <= this.value - 1) {
-          this.colors.$set(j, this.activeColor)
+        if (j <= this.props_value - 1) {
+          this.$set(this.colors,j, this.activeColor)
         } else {
-          this.colors.$set(j, '#ccc')
+          this.$set(this.colors,j, '#ccc')
         }
       }
     }
@@ -75,12 +79,17 @@ export default {
     return {
       colors: [],
       cutIndex: -1,
-      cutPercent: 0
+      cutPercent: 0,
+      props_value:0
     }
   },
   watch: {
-    value (val) {
+    props_value(val){
       this.updateStyle()
+      this.$emit('input',val)
+    },
+    value (val) {
+      this.props_value=val
     }
   }
 }

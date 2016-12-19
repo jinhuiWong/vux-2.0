@@ -1,6 +1,6 @@
 <template>
   <div class="vux-range-input-box" style="position:relative;margin-right:30px;margin-left:50px;">
-    <input class="vux-range-input" v-model="value" number>
+    <input class="vux-range-input" v-model="props_value" number>
   </div>
 </template>
 
@@ -39,17 +39,29 @@ export default {
       default: 30
     }
   },
-  ready () {
+  data(){
+    return{
+      props_value:0
+    }
+  },
+  created(){
+    this.props_value=this.value
+  },
+  mounted () {
+    let that=this
     let options = {
       decimal: this.decimal,
-      start: this.value,
+      start: this.props_value,
       min: this.min,
       max: this.max,
       minHTML: this.minHTML,
       maxHTML: this.maxHTML,
       disable: this.disabled,
       disabledOpacity: this.disabledOpacity,
-      initialBarWidth: getComputedStyle(this.$el.parentNode).width.replace('px', '') - 80
+      initialBarWidth: getComputedStyle(this.$el.parentNode).width.replace('px', '') - 80,
+      callback: function(value){
+        that.props_value=value
+      }
     }
     if (this.step !== 0) {
       options.step = this.step
@@ -60,11 +72,23 @@ export default {
     this.$el.querySelector('.range-bar').style.height = `${this.rangeBarHeight}px`
   },
   watch: {
-    value (val) {
+    props_value(val){
       this.range.setStart(val)
+      this.$emit('input',val)
     },
-    'min + max': function () {
-      let value = this.value
+    value (val) {
+      this.props_value=val
+    },
+    min(){
+      this.resetRange()
+    },
+    max: function () {
+      this.resetRange()
+    }
+  },
+  methods:{
+    resetRange(){
+      let value = this.props_value
       if (value < this.min) {
         value = this.min
       }
@@ -72,8 +96,8 @@ export default {
         value = this.max
       }
       this.range.reInit({min: this.min, max: this.max, value: value})
-      this.value = value
-      this.range.setStart(this.value)
+      this.props_value = value
+      this.range.setStart(this.props_value)
     }
   }
 }

@@ -1,9 +1,10 @@
 <template>
 <div>
-  <inline-calendar
+  <inline-calendar ref="calendar"
+  @on-change="onCalendarValueChange"
   class="inline-calendar-demo"
-  :show.sync="show"
-  :value.sync="value"
+  :show="show"
+  v-model="value"
   start-date="2016-04-01"
   end-date="2017-06-18"
   :range="range"
@@ -20,21 +21,21 @@
   :disable-future="disableFuture">
   </inline-calendar>
   <group title="control days" style="margin-top: 30px;">
-    <x-switch :value.sync="disablePast" title="Disable Past"></x-switch>
-    <x-switch :value.sync="disableFuture" title="Disable Future"></x-switch>
-    <x-switch :value.sync="showLastMonth" title="Show Last Month"></x-switch>
-    <x-switch :value.sync="showNextMonth" title="Show Next Month"></x-switch>
-    <x-switch :value.sync="return6Rows" inline-desc="if not, the calendar's height would change" title="Always show 6 rows"></x-switch>
-    <x-switch :value.sync="highlightWeekend" title="highlight weekend"></x-switch>
+    <x-switch v-model="disablePast" title="Disable Past"></x-switch>
+    <x-switch v-model="disableFuture" title="Disable Future"></x-switch>
+    <x-switch v-model="showLastMonth" title="Show Last Month"></x-switch>
+    <x-switch v-model="showNextMonth" title="Show Next Month"></x-switch>
+    <x-switch v-model="return6Rows" inline-desc="if not, the calendar's height would change" title="Always show 6 rows"></x-switch>
+    <x-switch v-model="highlightWeekend" title="highlight weekend"></x-switch>
     <cell title="current value" :value="value"></cell>
   </group>
   <group title="control navs">
-    <x-switch :value.sync="hideHeader" title="Hide header"></x-switch>
-    <x-switch :value.sync="hideWeekList" title="Hide week list"></x-switch>
-    <x-switch :value.sync="changeWeeksList" title="Change weeks list"></x-switch>
+    <x-switch v-model="hideHeader" title="Hide header"></x-switch>
+    <x-switch v-model="hideWeekList" title="Hide week list"></x-switch>
+    <x-switch v-model="changeWeeksList" title="Change weeks list"></x-switch>
   </group>
   <group title="replace text">
-    <x-switch :value.sync="replace" title="Replace date text"></x-switch>
+    <x-switch v-model="replace" title="Replace date text"></x-switch>
   </group>
   <br>
   <div style="margin: 15px;">
@@ -46,7 +47,7 @@
   </div>
   <br>
   <group title="custom every day cell">
-    <x-switch :value.sync="useCustomFn" inline-desc="Add red dot for dates with 8" title="add custom contents in day cell"></x-switch>
+    <x-switch v-model="useCustomFn" inline-desc="Add red dot for dates with 8" title="add custom contents in day cell"></x-switch>
   </group>
 
   <br>
@@ -59,10 +60,11 @@
   <div v-for="i in 5" v-if="i >= 1">
     <divider>2016 / {{i}}</divider>
     <inline-calendar
+    @on-change="onCalendar2Cchange"
     :render-month="[2016, i]"
     hide-header
     :return-six-rows="false"
-    :value.sync="listValue"
+    :value="listValue"
     :show-last-month="false"
     :show-next-month="false"
     :render-on-value-change="false"></inline-calendar>
@@ -110,6 +112,14 @@ module.exports = {
     },
     changeWeeksList (val) {
       this.weeksList = val ? ['日', '一', '二', '三', '四', '五', '六 '] : ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+    }
+  },
+  methods:{
+    onCalendarValueChange(val){
+      this.value=val
+    },
+    onCalendar2Cchange(val){
+      this.listValue=val
     }
   },
   components: {

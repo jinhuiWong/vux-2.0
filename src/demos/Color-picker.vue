@@ -1,18 +1,18 @@
 <template>
   <div>
     <div style="padding: 15px;">
-      <color-picker :colors="colors1" :value.sync="color1"></color-picker>
+      <color-picker :colors="colors1" v-model="color1"></color-picker>
       <br>
-      <color-picker :colors="colors1" :value.sync="color1" size="middle"></color-picker>
+      <color-picker :colors="colors1" v-model="color1" size="middle"></color-picker>
     </div>
     <group title="as a cell's content">
       <cell :title="'Color:' + color1">
-        <color-picker slot="value" :colors="colors1" :value.sync="color1" size="small"></color-picker>
+        <color-picker slot="value" :colors="colors1" v-model="color1" size="small"></color-picker>
       </cell>
     </group>
     <group title="a cell without title">
       <cell primary="content">
-        <color-picker slot="value" :colors="colors1" :value.sync="color1" size="middle"></color-picker>
+        <color-picker slot="value" :colors="colors1" v-model="color1" size="middle"></color-picker>
       </cell>
     </group>
   </div>

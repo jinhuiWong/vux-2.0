@@ -1,13 +1,13 @@
 <template>
   <div>
     <group title="default">
-      <calendar :value.sync="demo1" title="Calendar" disable-past></calendar>
+      <calendar :value="demo1" title="Calendar" disable-past></calendar>
     </group>
     <group title="set value as TODAY">
-      <calendar :value.sync="demo2" title="Calendar" disable-past></calendar>
+      <calendar :value="demo2" title="Calendar" disable-past></calendar>
     </group>
     <group title="disable future">
-      <calendar :value.sync="demo3" title="Calendar" disable-future></calendar>
+      <calendar :value="demo3" title="Calendar" disable-future></calendar>
     </group>
   </div>
 </template>

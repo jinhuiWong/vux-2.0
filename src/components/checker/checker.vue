@@ -14,12 +14,23 @@ export default {
       type: String,
       default: 'radio'
     },
-    value: [String, Number, Array],
+    value: [Array],
     max: Number
   },
+  data(){
+    return {
+      props_value:[]
+    }
+  },
+  created(){
+    this.props_value=this.value
+  },
   watch: {
+    props_value(val){
+      this.$emit('on-change', val)
+    },
     value (newValue) {
-      this.$emit('on-change', newValue)
+      this.props_value=this.value
     }
   }
 }

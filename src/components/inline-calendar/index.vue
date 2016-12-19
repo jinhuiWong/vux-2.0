@@ -24,11 +24,11 @@
         <tr v-for="(day,k1) in days">
           <td
           :data-date="formatDate(year, month, child)"
-          :data-current="value"
+          :data-current="props_value"
           v-for="(child,k2) in day"
-          :class="buildClass(k2, child, formatDate(year, month, child) === value && !child.isLastMonth && !child.isNextMonth)"
+          :class="buildClass(k2, child, formatDate(year, month, child) === props_value && !child.isLastMonth && !child.isNextMonth)"
           @click="select(k1,k2,$event)">
-            <span 
+            <span
             v-show="(!child.isLastMonth && !child.isNextMonth ) || (child.isLastMonth && showLastMonth) || (child.isNextMonth && showNextMonth)">{{replaceText(child.day, formatDate(year, month, child))}}</span>
             <div v-html="customSlotFn(k1, k2, child)"></div>
           </td>
@@ -52,11 +52,15 @@ export default {
       days: [],
       current: [],
       today: format(new Date(), 'YYYY-MM-DD'),
-      months: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+      months: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+      props_value:''
     }
   },
+  created(){
+    this.props_value=this.value
+  },
   mounted () {
-    this.value = this.convertDate(this.value)
+    this.props_value = this.convertDate(this.props_value)
     this.render(this.renderMonth[0], this.renderMonth[1] - 1)
   },
   computed: {
@@ -69,23 +73,26 @@ export default {
     }
   },
   watch: {
-    value (val) {
-      this.value = this.convertDate(val)
+    value(val){
+      this.props_value=val
+    },
+    props_value (val) {
+      this.props_value = this.convertDate(val)
       if (this.renderOnValueChange) {
         this.render(null, null, val)
       } else {
-        this.render(this.year, this.month, this.value)
+        this.render(this.year, this.month, this.props_value)
       }
       this.$emit('on-change', val)
     },
     returnSixRows (val) {
-      this.render(this.year, this.month, this.value)
+      this.render(this.year, this.month, this.props_value)
     },
     disablePast () {
-      this.render(this.year, this.month, this.value)
+      this.render(this.year, this.month, this.props_value)
     },
     disableFuture () {
-      this.render(this.year, this.month, this.value)
+      this.render(this.year, this.month, this.props_value)
     }
   },
   methods: {
@@ -108,7 +115,7 @@ export default {
       let data = getDays({
         year: year,
         month: month,
-        value: this.value,
+        value: this.props_value,
         rangeBegin: this.convertDate(this.startDate),
         rangeEnd: this.convertDate(this.endDate),
         returnSixRows: this.returnSixRows,
@@ -149,7 +156,7 @@ export default {
       }
       this.days[k1][k2].current = true
       this.current = [k1, k2]
-      this.value = [this.year, zero(this.month + 1), zero(this.days[k1][k2].day)].join('-')
+      this.props_value = [this.year, zero(this.month + 1), zero(this.days[k1][k2].day)].join('-')
     }
   }
 }

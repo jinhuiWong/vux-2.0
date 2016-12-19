@@ -1,11 +1,12 @@
 <template>
-  <cell :title="title" primary="content" :value="value" @click="onClick" is-link></cell>
-  <popup :show.sync="show">
+<div>
+  <cell :title="title" primary="content" :value="props_value" @click="onClick" is-link></cell>
+  <popup v-model="show">
     <inline-calendar
-    :value.sync="value"
+    :value="props_value"
     @on-change="onSelect"
     :render-month="renderMonth"
-    :start-date="startDate",
+    :start-date="startDate"
     :end-date="endDate"
     :show-last-month="showLastMonth"
     :show-next-month="showNextMonth"
@@ -21,6 +22,7 @@
     :disable-future="disableFuture"
     ></inline-calendar>
   </popup>
+</div>
 </template>
 
 <script>
@@ -41,18 +43,29 @@ export default {
     Popup,
     Cell
   },
+  created(){
+    this.props_value=this.value
+  },
   props: Props,
   methods: {
     onClick () {
       this.show = true
     },
-    onSelect () {
+    onSelect (val) {
       this.show = false
+      this.props_value=val
+      this.$emit('on-change',val)
+    }
+  },
+  watch:{
+    value(val){
+      this.props_value=val
     }
   },
   data () {
     return {
-      show: false
+      show: false,
+      props_value:''
     }
   }
 }

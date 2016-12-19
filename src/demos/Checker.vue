@@ -1,46 +1,46 @@
 <template>
   <div style="padding: 15px 0;">
     <divider>radio:no default value</divider>
-    <checker :value.sync="demo1" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
+    <checker :value="demo1" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
       <checker-item value="1">1</checker-item>
       <checker-item value="2">2</checker-item>
       <checker-item value="3">3</checker-item>
     </checker>
     <br>
-    <span>current value is: {{demo1}}</span>
+    <span>current value is: {{demo1.join('')}}</span>
     <br>
 
     <divider>checkbox</divider>
-    <checker :value.sync="demo1Checkbox" type="checkbox" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
+    <checker :value="demo1Checkbox" type="checkbox" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
       <checker-item :value="1">1</checker-item>
       <checker-item :value="2">2</checker-item>
       <checker-item :value="3">3</checker-item>
     </checker>
     <br>
-    <span>current value is: {{demo1Checkbox | json}}</span>
+    <span>current value is: {{demo1Checkbox.join('')}}</span>
     <br>
 
     <divider>checkbox with max limit</divider>
-    <checker :value.sync="demo1CheckboxMax" :max="2" type="checkbox" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
+    <checker :value="demo1CheckboxMax" :max="2" type="checkbox" default-item-class="demo1-item" selected-item-class="demo1-item-selected">
       <checker-item value="1">1</checker-item>
       <checker-item value="2">2</checker-item>
       <checker-item value="3">3</checker-item>
     </checker>
     <br>
-    <span>current value is: {{demo1CheckboxMax | json}}</span>
+    <span>current value is: {{demo1CheckboxMax.join('')}}</span>
     <br>
 
     <divider>default value 2</divider>
-    <checker :value.sync="demo2" default-item-class="demo2-item" selected-item-class="demo2-item-selected">
+    <checker :value="demo2" default-item-class="demo2-item" selected-item-class="demo2-item-selected">
       <checker-item value="1">1</checker-item>
       <checker-item value="2">2</checker-item>
       <checker-item value="3">3</checker-item>
     </checker>
     <br>
-    <span>current value is: {{demo2}}</span>
+    <span>current value is: {{demo2.join('')}}</span>
     <br>
     <divider>custom anything</divider>
-    <checker :value.sync="demo3" default-item-class="demo3-item" selected-item-class="demo3-item-selected">
+    <checker :value="demo3" default-item-class="demo3-item" selected-item-class="demo3-item-selected">
       <checker-item value="one">
         <img src="http://placeholder.qiniudn.com/80x50/FF3B3B/ffffff" alt="">
       </checker-item>
@@ -52,17 +52,17 @@
       </checker-item>
     </checker>
     <br>
-    <span>current value is: {{demo3}}</span>
+    <span>current value is: {{demo3.join('')}}</span>
     <br>
     <divider>used in a popup</divider>
     <group>
-      <cell title="select color" :value="demo4" is-link @click="showPopup=true"></cell>
+      <cell title="select color" :value="demo4.join('')" is-link @click="showPopup=true"></cell>
     </group>
-    <popup :show.sync="showPopup" class="checker-popup">
+    <popup v-model="showPopup" class="checker-popup">
       <div style="padding:10px 10px 40px 10px;">
         <p style="padding: 5px 5px 5px 2px;color:#888;">Colors</p>
         <checker
-        :value.sync="demo4"
+        :value="demo4"
         default-item-class="demo4-item"
         selected-item-class="demo4-item-selected"
         disabled-item-class="demo4-item-disabled"
@@ -75,18 +75,18 @@
       </div>
     </popup>
 
-    <divider>A real world radio example {{demo5}}</divider>
+    <divider>A real world radio example {{demo5.join('')}}</divider>
     <checker
-    :value.sync="demo5"
+    :value="demo5"
     default-item-class="demo5-item"
     selected-item-class="demo5-item-selected"
     >
       <checker-item v-for="i in [1, 2, 3]" :value="i">￥{{i*300}}</checker-item>
     </checker>
     <br/>
-    <divider>A real world checkbox example {{demo6 | json}}</divider>
+    <divider>A real world checkbox example {{demo6.join('')}}</divider>
     <checker
-    :value.sync="demo6"
+    :value="demo6"
     type="checkbox"
     default-item-class="demo5-item"
     selected-item-class="demo5-item-selected"
@@ -110,14 +110,14 @@ export default {
   },
   data () {
     return {
-      demo1: '',
+      demo1: [],
       demo1Checkbox: [2, 1],
       demo1CheckboxMax: ['2', '3'],
-      demo2: '2',
-      demo3: '',
-      demo4: '花跟叶',
+      demo2: ['2'],
+      demo3: [],
+      demo4: ['花跟叶'],
       showPopup: false,
-      demo5: 1,
+      demo5: [1],
       demo6: [2, 3]
     }
   }

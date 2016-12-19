@@ -31,6 +31,17 @@ const Masker = resolve => require(['../demos/Masker'], resolve)
 const Picker = resolve => require(['../demos/Picker'], resolve)
 const Address = resolve => require(['../demos/Address'], resolve)
 const InlineCalendar = resolve => require(['../demos/Inline-calendar'], resolve)
+const Calendar = resolve => require(['../demos/Calendar'], resolve)
+const Checklist = resolve => require(['../demos/Checklist'], resolve)
+const Checker = resolve => require(['../demos/Checker'], resolve)
+const ColorPicker = resolve => require(['../demos/Color-picker'], resolve)
+const Icon = resolve => require(['../demos/Icon'], resolve)
+const Datetime = resolve => require(['../demos/Datetime'], resolve)
+const Radio = resolve => require(['../demos/Radio'], resolve)
+const Range = resolve => require(['../demos/Range'], resolve)
+const Rater = resolve => require(['../demos/Rater'], resolve)
+const XButton = resolve => require(['../demos/X-button'], resolve)
+
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
 
 const router = new VueRouter({
@@ -63,6 +74,16 @@ const router = new VueRouter({
         { path: rootPath + 'component/picker', component: Picker , name: 'picker'},
         { path: rootPath + 'component/address', component: Address , name: 'address'},
         { path: rootPath + 'component/inline-calendar', component: InlineCalendar , name: 'inline-calendar'},
+        { path: rootPath + 'component/calendar', component: Calendar , name: 'calendar'},
+        { path: rootPath + 'component/checklist', component: Checklist , name: 'checklist'},
+        { path: rootPath + 'component/checker', component: Checker , name: 'checker'},
+        { path: rootPath + 'component/color-picker', component: ColorPicker , name: 'colorPicker'},
+        { path: rootPath + 'component/icon', component: Icon , name: 'icon'},
+        { path: rootPath + 'component/datetime', component: Datetime , name: 'datetime'},
+        { path: rootPath + 'component/radio', component: Radio , name: 'radio'},
+        { path: rootPath + 'component/range', component: Range , name: 'range'},
+        { path: rootPath + 'component/rater', component: Rater , name: 'rater'},
+        { path: rootPath + 'component/x-button', component: XButton , name: 'xbutton'},
 
         //找不到页面就返回404页面
         {

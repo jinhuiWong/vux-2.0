@@ -26,6 +26,7 @@ export default {
   },
   watch: {
     value (newVal) {
+      console.log(this.prisine)
       if (this.prisine === true) {
         this.prisine = false
       }

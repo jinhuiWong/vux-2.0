@@ -1,10 +1,11 @@
 <template>
   <a class="weui_cell" href="javascript:">
+    <input style="display:none" v-model="props_value">
     <div class="weui_cell_bd weui_cell_primary">
       <p>{{title}}</p>
       <inline-desc v-if="inlineDesc">{{inlineDesc}}</inline-desc>
     </div>
-    <div class="weui_cell_ft with_arrow vux-datetime-value">{{value || placeholder}}</div>
+    <div class="weui_cell_ft with_arrow vux-datetime-value">{{ props_value || placeholder}}</div>
   </a>
 </template>
 
@@ -71,9 +72,15 @@ export default {
     }
   },
   created () {
+    this.props_value=this.value
     this.handleChangeEvent = true
   },
-  ready () {
+  data(){
+    return{
+      props_value:''
+    }
+  },
+  mounted () {
     const uuid = this.uuid
     this.$el.setAttribute('id', 'vux-datetime-' + uuid)
     this.render()
@@ -84,7 +91,7 @@ export default {
       const options = {
         trigger: '#vux-datetime-' + this.uuid,
         format: this.format,
-        value: this.value,
+        value: this.props_value,
         output: '.vux-datetime-value',
         confirmText: this.confirmText,
         cancelText: _this.cancelText,
@@ -95,7 +102,7 @@ export default {
         hourRow: this.hourRow,
         minuteRow: this.minuteRow,
         onConfirm (value) {
-          _this.value = value
+          _this.props_value = value
         },
         onClear (value) {
           _this.$emit('on-clear', value)
@@ -119,8 +126,12 @@ export default {
     }
   },
   watch: {
-    value (val) {
+    props_value(val){
       this.$emit('on-change', val)
+      this.$emit('input',val)
+    },
+    value (val) {
+      this.props_value=val
     }
   },
   beforeDestroy () {

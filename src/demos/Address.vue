@@ -17,7 +17,7 @@
 
     <br/>
     <group title="错误的地址将不能正确渲染">
-      <x-address title="广东省, 深圳 市, 南山区" :value.sync="value5" raw-value :list="addressData"></x-address>
+      <x-address title="广东省, 深圳 市, 南山区" :value="value5" raw-value :list="addressData"></x-address>
     </group>
   </div>
 </template>

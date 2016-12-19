@@ -1,9 +1,10 @@
 <template>
   <div class="vux-color-picker">
+    <input style="display:none" v-model="props_value">
     <flexbox>
       <flexbox-item v-for="color in colors" class="vux-color-box">
         <span class="vux-color-item" :style="{borderRadius: width/2 + 'px',backgroundColor: color, width: width + 'px', height: width + 'px'}" @click="change(color)" :class="{'vux-color-white': color === '#fff' || color === '#fff', 'vux-color-picker-small': size === 'small', 'vux-color-picker-middle': size === 'middle'}">
-          <icon v-if="color === value" class="vux-color-checked" :style="{lineHeight: width + 'px'}" type="success_no_circle"></icon>
+          <icon v-if="color === props_value" class="vux-color-checked" :style="{lineHeight: width + 'px'}" type="success_no_circle"></icon>
         </span>
       </flexbox-item>
     </flexbox>
@@ -41,10 +42,26 @@ export default {
       return sizeMap[this.size]
     }
   },
+  data(){
+    return {
+      props_value : ''
+    }
+  },
+  created(){
+    this.props_value=this.value
+  },
   methods: {
     change (color) {
-      this.value = color
+      this.props_value = color
       this.$emit('on-change', color)
+    }
+  },
+  watch:{
+    value(val){
+      this.props_value=val
+    },
+    props_value(val){
+      this.$emit('input',val);
     }
   }
 }
