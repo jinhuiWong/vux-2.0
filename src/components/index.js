@@ -14,7 +14,7 @@ import Group from './group'
 import GroupTitle from './group-title'
 import Box from './box'
 // import Tip from './tip'
-// import Selector from './selector'
+import Selector from './selector'
 import XButton from './x-button'
 import Swiper from './swiper'
 import SwiperItem from './swiper-item'
@@ -81,7 +81,7 @@ const vux = {
   XSwitch,
   Box,
   // Tip,
-  // Selector,
+  Selector,
   Cell,
   InlineDesc,
   XButton,

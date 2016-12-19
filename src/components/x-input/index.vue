@@ -58,7 +58,7 @@ const validators = {
   }
 }
 export default {
-  ready () {
+  mounted () {
     if (!this.title && !this.placeholder && !this.value) {
       console.warn('no title and no placeholder?')
     }

@@ -1,20 +1,20 @@
 <template>
   <div>
     <group>
-      <switch title="Toggle" :value.sync="show1" @on-change="show1change"></switch>
+      <x-switch title="Toggle" :value="show1" @on-change="show1change"></x-switch>
     </group>
     <loading :show="show1" :text="text1"></loading>
   </div>
 </template>
 
 <script>
-import { Loading, Group, Switch } from '../components'
+import { Loading, Group, XSwitch } from '../components'
 
 export default {
   components: {
     Loading,
     Group,
-    Switch
+    XSwitch
   },
   data () {
     return {
@@ -24,6 +24,7 @@ export default {
   },
   methods: {
     show1change (val) {
+      this.show1=val
       if (val) {
         tick(0, (percent) => {
           if (percent === 100) {

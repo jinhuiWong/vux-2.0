@@ -45,7 +45,7 @@ export default {
       return typeof this.max === 'undefined' ? false : this.value >= this.max
     }
   },
-  ready () {
+  mounted () {
   },
   watch: {
     value (newValue, old) {

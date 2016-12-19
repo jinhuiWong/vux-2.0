@@ -41,6 +41,9 @@ const Radio = resolve => require(['../demos/Radio'], resolve)
 const Range = resolve => require(['../demos/Range'], resolve)
 const Rater = resolve => require(['../demos/Rater'], resolve)
 const XButton = resolve => require(['../demos/X-button'], resolve)
+const Selector = resolve => require(['../demos/Selector'], resolve)
+const Loading = resolve => require(['../demos/Loading'], resolve)
+
 
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
 
@@ -84,6 +87,9 @@ const router = new VueRouter({
         { path: rootPath + 'component/range', component: Range , name: 'range'},
         { path: rootPath + 'component/rater', component: Rater , name: 'rater'},
         { path: rootPath + 'component/x-button', component: XButton , name: 'xbutton'},
+        { path: rootPath + 'component/selector', component: Selector , name: 'selector'},
+        { path: rootPath + 'component/loading', component: Loading , name: 'loading'},
+
 
         //找不到页面就返回404页面
         {

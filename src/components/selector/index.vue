@@ -4,13 +4,13 @@
       <label for="" class="weui_label" :style="{width: $parent.labelWidth, textAlign: $parent.labelAlign, marginRight: $parent.labelMarginRight}">{{title}}</label>
     </div>
     <div class="weui_cell_bd weui_cell_primary" v-if="!readonly">
-      <select class="weui_select" :class="{'vux-selector-no-padding':!title}" :name="name" v-model="value" :style="{direction: direction}">
-        <option value="" v-if="placeholder" :selected="placeholder && !value">{{placeholder}}</option>
+      <select class="weui_select" :class="{'vux-selector-no-padding':!title}" :name="name" v-model="props_value" :style="{direction: direction}">
+        <option value="" v-if="placeholder" :selected="placeholder && !props_value">{{placeholder}}</option>
         <option :value="one.key" v-for="one in processOptions">{{one.value}}</option>
       </select>
     </div>
     <div class="weui_cell_ft" v-else>
-      {{value | findByKey processOptions}}
+      {{value | findByKey(processOptions)}}
     </div>
   </div>
 </template>
@@ -43,9 +43,16 @@ export default {
   filters: {
     findByKey
   },
+  created(){
+    this.props_value=this.value
+  },
   watch: {
-    value (newValue) {
+    props_value(newValue){
       this.$emit('on-change', newValue)
+      this.$emit('input',newValue)
+    },
+    value (newValue) {
+      this.props_value=newValue
     }
   },
   props: {
@@ -59,6 +66,11 @@ export default {
     placeholder: String,
     readonly: Boolean,
     value: String
+  },
+  data(){
+    return {
+      props_value:''
+    }
   }
 }
 </script>
