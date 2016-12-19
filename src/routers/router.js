@@ -43,7 +43,7 @@ const Rater = resolve => require(['../demos/Rater'], resolve)
 const XButton = resolve => require(['../demos/X-button'], resolve)
 const Selector = resolve => require(['../demos/Selector'], resolve)
 const Loading = resolve => require(['../demos/Loading'], resolve)
-
+const Badge = resolve => require(['../demos/Badge'], resolve)
 
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
 
@@ -89,6 +89,7 @@ const router = new VueRouter({
         { path: rootPath + 'component/x-button', component: XButton , name: 'xbutton'},
         { path: rootPath + 'component/selector', component: Selector , name: 'selector'},
         { path: rootPath + 'component/loading', component: Loading , name: 'loading'},
+        { path: rootPath + 'component/badge', component: Badge , name: 'badge'},
 
 
         //找不到页面就返回404页面

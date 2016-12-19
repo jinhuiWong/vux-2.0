@@ -6,13 +6,13 @@
     <br>
     <group>
       <cell title="Used in a Cell" is-link>
-        <div class="badge-value" slot="value" class="vux-center-v">
+        <div class="badge-value vux-center-v" slot="value">
           New Message &nbsp;
           <badge text="8"></badge>
         </div>
       </cell>
       <cell title="Used in a Cell" is-link>
-        <div class="badge-value" slot="value" class="vux-center-v">
+        <div class="badge-value vux-center-v" slot="value">
           New Message &nbsp;
           <badge text="888"></badge>
         </div>
