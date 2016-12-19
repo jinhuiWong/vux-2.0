@@ -24,14 +24,6 @@ npm run dev
 # build for production with minification
 npm run build
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 交流qq群：537322257
 ![alt text]( http://og1rlwcj8.bkt.clouddn.com/7f4c4fe1gw1evv8bc0r3tj20go0ghjs3.jpg "Title")
