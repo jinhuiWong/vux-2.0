@@ -6,7 +6,7 @@
       </cell>
     </group>
     <group title="manually">
-      <switch title="start" :value.sync="start"></switch>
+      <x-switch title="start" :value.sync="start"></x-switch>
       <cell title="15s">
         <countdown slot="value" :time="time" :start="start" @on-finish="finish2"></countdown>
       </cell>
@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import { Group, Cell, Countdown, Switch } from '../components'
+import { Group, Cell, Countdown, XSwitch } from '../components'
 
 export default {
   components: {
     Group,
     Cell,
     Countdown,
-    Switch
+    XSwitch
   },
   methods: {
     finish (index) {

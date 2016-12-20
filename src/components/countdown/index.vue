@@ -41,7 +41,7 @@ export default {
       }
     }
   },
-  ready () {
+  mounted () {
     if (this.start) {
       this.tick()
     }

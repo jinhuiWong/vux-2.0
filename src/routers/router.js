@@ -44,6 +44,19 @@ const XButton = resolve => require(['../demos/X-button'], resolve)
 const Selector = resolve => require(['../demos/Selector'], resolve)
 const Loading = resolve => require(['../demos/Loading'], resolve)
 const Badge = resolve => require(['../demos/Badge'], resolve)
+const Input = resolve => require(['../demos/Input'], resolve)
+const Textarea = resolve => require(['../demos/Textarea'], resolve)
+const XNumber = resolve => require(['../demos/Number'], resolve)
+const Dialog = resolve => require(['../demos/Dialog'], resolve)
+const Alert = resolve => require(['../demos/Alert'], resolve)
+const Confirm = resolve => require(['../demos/Confirm'], resolve)
+const Blur = resolve => require(['../demos/Blur'], resolve)
+const Popover = resolve => require(['../components/popover/DemoIndex'], resolve)
+const Circle = resolve => require(['../demos/Circle'], resolve)
+const Countup = resolve => require(['../demos/Countup'], resolve)
+const Countdown = resolve => require(['../demos/Countdown'], resolve)
+
+
 
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
 
@@ -90,6 +103,18 @@ const router = new VueRouter({
         { path: rootPath + 'component/selector', component: Selector , name: 'selector'},
         { path: rootPath + 'component/loading', component: Loading , name: 'loading'},
         { path: rootPath + 'component/badge', component: Badge , name: 'badge'},
+        { path: rootPath + 'component/input', component: Input , name: 'input'},
+        { path: rootPath + 'component/textarea', component: Textarea , name: 'textarea'},
+        { path: rootPath + 'component/number', component: XNumber , name: 'number'},
+        { path: rootPath + 'component/dialog', component: Dialog , name: 'dialog'},
+        { path: rootPath + 'component/alert', component: Alert , name: 'alert'},
+        { path: rootPath + 'component/confirm', component: Confirm , name: 'confirm'},
+        { path: rootPath + 'component/popover', component: Popover , name: 'popover'},
+        { path: rootPath + 'component/blur', component: Blur , name: 'blur'},
+        { path: rootPath + 'component/circle', component: Circle , name: 'circle'},
+        { path: rootPath + 'component/countup', component: Countup , name: 'countup'},
+        { path: rootPath + 'component/countdown', component: Countdown , name: 'countdown'},
+
 
 
         //找不到页面就返回404页面

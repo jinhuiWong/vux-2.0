@@ -1,8 +1,9 @@
 <template>
   <div class="vux-alert">
-    <dialog
+    <input style="display:none" v-model="props_show">
+    <x-dialog
     class="weui_dialog_alert"
-    :show="show"
+    :show="props_show"
     :mask-transition="maskTransition"
     :dialog-transition="dialogTransition"
     @on-hide="$emit('on-hide')"
@@ -12,18 +13,22 @@
       <div class="weui_dialog_ft">
         <a href="javascript:;" class="weui_btn_dialog primary" @click="onHide">{{buttonText}}</a>
       </div>
-    </dialog>
+    </x-dialog>
   </div>
 </template>
 
 <script>
-import Dialog from '../dialog'
+import XDialog from '../dialog'
 
 export default {
   components: {
-    Dialog
+    XDialog
   },
   props: {
+    value: {
+      type: Boolean,
+      default: false
+    },
     show: Boolean,
     title: String,
     buttonText: {
@@ -39,9 +44,29 @@ export default {
       default: 'vux-dialog'
     }
   },
+  created(){
+    this.props_show=this.show
+    if(this.value) this.props_show=this.value
+  },
   methods: {
     onHide () {
-      this.show = false
+      this.props_show = false
+    }
+  },
+  watch: {
+    value(val){
+      this.props_show=val
+    },
+    props_show(val){
+      this.$emit('input',val)
+    },
+    show (val) {
+      this.props_show=val
+    }
+  },
+  data(){
+    return{
+      props_show:false
     }
   }
 }

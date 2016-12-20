@@ -6,7 +6,7 @@
 import Countup from 'countup'
 
 export default {
-  ready () {
+  mounted () {
     this._countup = new Countup(this.$el, this.startVal, this.endVal, this.decimals, this.duration, this.options)
     this._countup.start()
   },

@@ -8,7 +8,7 @@
 import Blur from './blur'
 
 export default {
-  ready () {
+  mounted () {
     this._blur = new Blur(this.$el, {
       url: this.url,
       blurAmount: this.blurAmount,

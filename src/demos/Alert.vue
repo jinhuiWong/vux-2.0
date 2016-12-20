@@ -1,23 +1,23 @@
 <template>
   <div>
     <group>
-      <switch title="Toggle" :value.sync="show"></switch>
+      <x-switch title="Toggle" v-model="show"></x-switch>
     </group>
-    <alert :show.sync="show" title="congratulations" @on-show="onShow" @on-hide="onHide">Message is sent successfully~</alert>
+    <alert v-model="show" title="congratulations" @on-show="onShow" @on-hide="onHide">Message is sent successfully~</alert>
     <group title="As a plugin(>=v0.1.3)">
-      <switch title="Show" :value.sync="show1" @on-change="onChange"></switch>
+      <x-switch title="Show" v-model="show1" @on-change="onChange"></x-switch>
     </group>
   </div>
 </template>
 
 <script>
-import { Alert, Group, Switch } from '../components'
+import { Alert, Group, XSwitch } from '../components'
 
 export default {
   components: {
     Alert,
     Group,
-    Switch
+    XSwitch
   },
   data () {
     return {

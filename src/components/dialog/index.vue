@@ -1,9 +1,14 @@
 <template>
-  <div class="weui_dialog_alert" @touchmove="!this.scroll && $event.preventDefault()">
-    <div class="weui_mask" @click="hideOnBlur && (show = false)" v-show="show" :transition="maskTransition"></div>
-    <div class="weui_dialog" v-show="show" :transition="dialogTransition">
-      <slot></slot>
-    </div>
+  <div class="weui_dialog_alert fix_ios_fixed" @touchmove="onTouchMove">
+    <transition name="vux-mask">
+      <div class="weui_mask" @click="hideOnBlur && (props_show = false)" v-show="props_show"></div>
+    </transition>
+    <input style="display:none" v-model="props_show">
+    <transition name="vux-dialog">
+      <div class="weui_dialog" v-show="props_show" >
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -11,6 +16,10 @@
 export default {
   props: {
     show: {
+      type: Boolean,
+      default: false
+    },
+    value: {
       type: Boolean,
       default: false
     },
@@ -28,9 +37,31 @@ export default {
       default: true
     }
   },
+  created(){
+    this.props_show=this.show
+    if(this.value) this.props_show=this.value
+
+  },
   watch: {
-    show (val) {
+    value(val){
+      this.props_show=val
+    },
+    props_show(val){
       this.$emit(val ? 'on-show' : 'on-hide')
+      this.$emit('input',val)
+    },
+    show (val) {
+      this.props_show=val
+    }
+  },
+  data(){
+    return {
+      props_show:false
+    }
+  },
+  methods:{
+    onTouchMove:function(event){
+      !this.scroll && event.preventDefault()
     }
   }
 }

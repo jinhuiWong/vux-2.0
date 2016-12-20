@@ -7,11 +7,11 @@
       <button class="btn btn-default">Popover on top</button>
     </popover>
 
-    <popover placement="bottom" style="margin: 20px;">
+    <popover placement="bottom" style="margin: 20px;" :gutter="200">
       <div slot="content" class="popover-demo-content">
         hello world
       </div>
-      <button class="btn btn-default">Popover on bottom</button>
+      <button class="btn btn-default">Popover on bottom & 设置偏移量</button>
     </popover>
 
     <popover placement="left" style="margin: 20px;">

@@ -2,7 +2,9 @@
   <div>
 
     <group title="Default">
-      <x-input title="message" placeholder="I'm placeholder"></x-input>
+      <x-input title="message" placeholder="I'm placeholder" v-model="value"></x-input>
+      <span style="margin-left: 15px;" >value: {{value}}</span>
+      <br>
     </group>
 
     <group title="不显示清除按钮">
@@ -26,7 +28,7 @@
     </group>
 
     <group title="确认输入">
-      <x-input title="请输入6位数字" type="text" placeholder="" :value.sync="password" :min="6" :max="6" @on-change="change"></x-input>
+      <x-input title="请输入6位数字" type="text" placeholder="" v-model="password" :min="6" :max="6" @on-change="change"></x-input>
       <x-input title="请确认6位数字" type="text" placeholder="" :equal-with="password"></x-input>
     </group>
 
@@ -38,15 +40,14 @@
         <x-button slot="right" type="primary">发送验证码</x-button>
       </x-input>
     </group>
-
     <group title="check if value is valid when required===true">
-      <x-input title="message" placeholder="I'm placeholder" v-ref:input></x-input>
-      <cell title="get valid value" :value="'$valid value:' + $refs.input.valid"></cell>
+      <x-input title="message" placeholder="I'm placeholder" ref="input" @input="oninput1"></x-input>
+      <cell title="get valid value" :value="'$valid value:' + valid"></cell>
     </group>
 
      <group title="check if value is valid when required===false">
-      <x-input title="message" placeholder="I'm placeholder" :required="false" v-ref:input02></x-input>
-      <cell title="get valid value" :value="'$valid value:' + $refs.input02.valid"></cell>
+      <x-input title="message" placeholder="I'm placeholder" :required="false" ref="input02" @input="oninput2"></x-input>
+      <cell title="get valid value" :value="'$valid value:' + valid"></cell>
     </group>
 
   </div>
@@ -64,12 +65,20 @@ export default {
   },
   data () {
     return {
-      password: '123465'
+      value:'',
+      password: '123465',
+      valid: false
     }
   },
   methods: {
     change (val) {
       console.log(val)
+    },
+    oninput1(val){
+      this.valid=this.$refs.input.valid
+    },
+    oninput2(val){
+      this.valid=this.$refs.input02.valid
     }
   }
 }

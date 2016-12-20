@@ -8,31 +8,32 @@
       <input
       class="weui_input"
       :autocomplete="autocomplete"
-      :autocapitalize="autocapitalize"
       :autocorrect="autocorrect"
+      :autocapitalize="autocapitalize"
       :spellcheck="spellcheck"
       :style="inputStyle"
-      :type="type"
+      :type="props_type"
       :name="name"
       :pattern="pattern"
       :placeholder="placeholder"
       :readonly="readonly"
-      v-model="value"
+      :value="props_value"
+      @input="onValueChange($event)"
       @blur="blur"
-      v-el:input/>
+      ref="input" />
+       <!-- v-model="value" -->
     </div>
     <div class="weui_cell_ft">
-      <icon type="clear" v-show="showClear && value && !readonly" @click="clear"></icon>
-      <icon class="vux-input-icon-warn" type="warn" title="{{!valid ? firstError : ''}}" v-show="!equalWith && ((touched && !valid && firstError) || (forceShowError && !valid && firstError))"></icon>
+      <icon type="clear" v-show="props_showClear && props_value && !readonly" @click.native="clear"></icon>
+      <icon class="vux-input-icon-warn" type="warn" :title="!valid ? firstError : '' " v-show="!equalWith && ((touched && !valid && firstError) || (forceShowError && !valid && firstError))"></icon>
       <icon class="vux-input-icon-warn" type="warn" v-show="hasLengthEqual && dirty && equalWith && !valid"></icon>
-      <icon type="success" v-show="equalWith && equalWith===value && valid"></icon>
+      <icon type="success" v-show="equalWith && equalWith===props_value && valid"></icon>
       <slot name="right"></slot>
     </div>
   </div>
 </template>
 
 <script>
-import Base from '../../libs/base'
 import Icon from '../icon'
 import InlineDesc from '../inline-desc'
 
@@ -58,21 +59,26 @@ const validators = {
   }
 }
 export default {
+  created(){
+    this.props_value = this.value
+    this.props_showClear=this.showClear
+    this.props_type=this.type
+    this.handleChangeEvent = false
+  },
   mounted () {
-    if (!this.title && !this.placeholder && !this.value) {
+    if (!this.title && !this.placeholder && !this.props_value) {
       console.warn('no title and no placeholder?')
     }
     if (this.equalWith) {
-      this.showClear = false
+      this.props_showClear = false
     }
-    if (this.required && !this.value) {
+    if (this.required && !this.props_value) {
       this.valid = false
     }
     if (this.isType === 'email') {
-      this.type = 'email'
+      this.props_type = 'email'
     }
   },
-  mixins: [Base],
   components: {
     Icon,
     InlineDesc
@@ -106,9 +112,17 @@ export default {
     textAlign: String,
     // https://github.com/yisibl/blog/issues/3
     autocomplete: 'off',
-    autocapitalize: 'off',
+    autocapitalize: {
+      type:String,
+      default:'off'
+    },
+    // autocapitalize:'off',
     autocorrect: 'off',
-    spellcheck: 'false'
+    spellcheck: 'false',
+    required: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     pattern () {
@@ -128,11 +142,17 @@ export default {
           textAlign: this.textAlign
         }
       }
+    },
+    dirty () {
+      return !this.prisine
+    },
+    invalid () {
+      return !this.valid
     }
   },
   methods: {
     clear () {
-      this.value = ''
+      this.props_value = ''
       this.focus = true
     },
     blur () {
@@ -150,12 +170,12 @@ export default {
       }
       this.errors = {}
 
-      if (!this.value && !this.required) {
+      if (!this.props_value && !this.required) {
         this.valid = true
         return
       }
 
-      if (!this.value && this.required) {
+      if (!this.props_value && this.required) {
         this.valid = false
         this.errors.required = '必填哦'
         return
@@ -163,7 +183,7 @@ export default {
 
       const validator = validators[this.isType]
       if (validator) {
-        this.valid = validator[ 'fn' ](this.value)
+        this.valid = validator[ 'fn' ](this.props_value)
         if (!this.valid) {
           this.errors.format = validator[ 'msg' ] + '格式不对哦~'
           return
@@ -173,8 +193,8 @@ export default {
       }
 
       if (this.min) {
-        if (this.value.length < this.min) {
-          this.errors.min = this.$interpolate('最少应该输入{{min}}个字符哦')
+        if (this.props_value.length < this.min) {
+          this.errors.min = '最少应该输入'+this.min+'个字符哦'
           this.valid = false
           this.getError()
           return
@@ -184,8 +204,8 @@ export default {
       }
 
       if (this.max) {
-        if (this.value.length > this.max) {
-          this.errors.max = this.$interpolate('最多可以输入{{max}}个字符哦')
+        if (this.props_value.length > this.max) {
+          this.errors.max = '最多可以输入'+this.max+'个字符哦'
           this.valid = false
           this.forceShowError = true
           return
@@ -198,9 +218,9 @@ export default {
       this.valid = true
     },
     validateEqual () {
-      let willCheck = this.dirty || this.value.length >= this.equalWith.length
+      let willCheck = this.dirty || this.props_value.length >= this.equalWith.length
       // 只在长度符合时显示正确与否
-      if (willCheck && this.value !== this.equalWith) {
+      if (willCheck && this.props_value !== this.equalWith) {
         this.valid = false
         this.errors.equal = '输入不一致'
         return
@@ -208,6 +228,13 @@ export default {
         this.valid = true
         delete this.errors.equal
       }
+    },
+    setTouched () {
+      this.touched = true
+    },
+    onValueChange(event){
+      this.props_value=event.target.value
+      this.$emit('input',event.target.value)
     }
   },
   data () {
@@ -217,7 +244,15 @@ export default {
       hasLengthEqual: false,
       focus: false
     }
-    return data
+    return {
+      data : data,
+      errors: {},
+      touched: false,
+      valid: true,
+      props_value: undefined,
+      props_showClear:true,
+      props_type:'text'
+    }
   },
   watch: {
     focus (newVal) {
@@ -229,6 +264,10 @@ export default {
       this.getError()
     },
     value (newVal) {
+      this.props_value=newVal
+    },
+    props_value(newVal){
+      console.log(newVal);
       if (this.equalWith) {
         if (newVal.length === this.equalWith.length) {
           this.hasLengthEqual = true
@@ -237,6 +276,16 @@ export default {
       } else {
         this.validate()
       }
+      if (!this.handleChangeEvent) {
+        this.$emit('on-change', newVal)
+      }
+      this.$emit('input',newVal)
+    },
+    showClear(val){
+      this.props_showClear=val
+    },
+    type(val){
+      this.props_type=val
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <dialog class="weui_dialog_confirm"
-    :show="show"
+    <x-dialog class="weui_dialog_confirm"
+    :show="props_show"
     :mask-transition="maskTransition"
     :dialog-transition="dialogTransition"
     @on-hide="$emit('on-hide')"
@@ -12,18 +12,22 @@
         <a href="javascript:;" class="weui_btn_dialog default" @click="onCancel">{{cancelText}}</a>
         <a href="javascript:;" class="weui_btn_dialog primary" @click="onConfirm">{{confirmText}}</a>
       </div>
-    </dialog>
+    </x-dialog>
   </div>
 </template>
 
 <script>
-import Dialog from '../dialog'
+import XDialog from '../dialog'
 
 export default {
   components: {
-    Dialog
+    XDialog
   },
   props: {
+    value: {
+      type: Boolean,
+      default: false
+    },
     show: Boolean,
     title: {
       type: String,
@@ -46,13 +50,33 @@ export default {
       default: 'vux-dialog'
     }
   },
+  created(){
+    this.props_show=this.show
+    if(this.value) this.props_show=this.value
+  },
+  watch: {
+    value(val){
+      this.props_show=val
+    },
+    props_show(val){
+      this.$emit('input',val)
+    },
+    show (val) {
+      this.props_show=val
+    }
+  },
+  data(){
+    return {
+      props_show:false
+    }
+  },
   methods: {
     onConfirm () {
-      this.show = false
+      this.props_show = false
       this.$emit('on-confirm')
     },
     onCancel () {
-      this.show = false
+      this.props_show = false
       this.$emit('on-cancel')
     }
   }

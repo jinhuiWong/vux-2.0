@@ -3,13 +3,13 @@ import Style from '../styles/index.vue' // eslint-disable-line
 
 import Radio from './radio'
 // import DevTip from './dev-tip'
-// import XInput from './x-input'
-// import XNumber from './x-number'
+import XInput from './x-input'
+import XNumber from './x-number'
 import Cell from './cell'
 import InlineDesc from './inline-desc'
 import Checklist from './checklist'
 import XSwitch from './x-switch'
-// import XTextarea from './x-textarea'
+import XTextarea from './x-textarea'
 import Group from './group'
 import GroupTitle from './group-title'
 import Box from './box'
@@ -30,37 +30,37 @@ import PopupPicker from './popup-picker'
 import XAddress from './x-address'
 import Toast from './toast'
 import Loading from './loading'
-// import Alert from './alert'
-// import Confirm from './confirm'
+import Alert from './alert'
+import Confirm from './confirm'
 // import Progress from './progress'
 // import XImg from './x-img'
 import Spinner from './spinner'
 import Calendar from './calendar'
 import Icon from './icon'
-// import Circle from './circle'
+import XCircle from './circle'
 import ColorPicker from './color-picker'
 import AddressChinaData from './x-address/list.json'
 import Divider from './divider'
-// import Blur from './blur'
-// import Countup from './countup'
+import Blur from './blur'
+import Countup from './countup'
 import Scroller from './scroller'
 // import Shake from './shake'
 // import WechatEmotion from './wechat-emotion'
 // import Search from './search'
 // import DateFormatter from './datetime/format'
 import Masker from './masker'
-// import Countdown from './countdown'
+import Countdown from './countdown'
 // import FriendlyTime from '../filters/friendly-time'
 import XHeader from './x-header'
 // import Panel from './panel'
 import InlineCalendar from './inline-calendar'
 import Badge from './badge'
-// import Dialog from './dialog'
+import XDialog from './dialog'
 // import Card from './card'
 // import Previewer from './previewer'
 // import NumberRoller from './number-roller'
 import ViewBox from './view-box'
-// import Popover from './popover'
+import Popover from './popover'
 
 // import { ButtonTab, ButtonTabItem } from './button-tab'
 import { Checker, CheckerItem } from './checker'
@@ -74,9 +74,9 @@ const vux = {
   Radio,
   Group,
   // DevTip,
-  // XInput,
+  XInput,
   GroupTitle,
-  // XNumber,
+  XNumber,
   Checklist,
   XSwitch,
   Box,
@@ -85,7 +85,7 @@ const vux = {
   Cell,
   InlineDesc,
   XButton,
-  // XTextarea,
+  XTextarea,
   Flexbox,
   FlexboxItem,
   Tab,
@@ -104,26 +104,26 @@ const vux = {
   XAddress,
   Toast,
   Loading,
-  // Alert,
-  // Confirm,
+  Alert,
+  Confirm,
   // Progress,
   // XImg,
   Spinner,
   Calendar,
   Icon,
-  // Circle,
+  XCircle,
   ColorPicker,
   AddressChinaData,
   Divider,
-  // Blur,
-  // Countup,
+  Blur,
+  Countup,
   Scroller,
   // Shake,
   // WechatEmotion,
   // Search,
   // DateFormatter,
   Masker,
-  // Countdown,
+  Countdown,
   // FriendlyTime,
   XHeader,
   Checker,
@@ -139,12 +139,12 @@ const vux = {
   // ButtonTabItem,
   InlineCalendar,
   Badge,
-  // Dialog,
+  XDialog,
   // Card,
   // Previewer,
   // NumberRoller,
   ViewBox,
-  // Popover
+  Popover
 }
 
 // if (DEV) { // eslint-disable-line

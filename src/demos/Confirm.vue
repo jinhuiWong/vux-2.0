@@ -1,22 +1,22 @@
 <template>
   <div>
     <group>
-      <switch title="Toggle" :value.sync="show"></switch>
+      <x-switch title="Toggle" v-model="show"></x-switch>
     </group>
-    <confirm :show.sync="show" title="confirm deleting the item" @on-cancel="onCancel" @on-confirm="onConfirm" @on-show="onShow" @on-hide="onHide">
+    <confirm v-model="show" title="confirm deleting the item" @on-cancel="onCancel" @on-confirm="onConfirm" @on-show="onShow" @on-hide="onHide">
       <p style="text-align:center;">Are you sure?</p>
     </confirm>
   </div>
 </template>
 
 <script>
-import { Confirm, Group, Switch } from '../components'
+import { Confirm, Group,  XSwitch } from '../components'
 
 export default {
   components: {
     Confirm,
     Group,
-    Switch
+    XSwitch
   },
   data () {
     return {

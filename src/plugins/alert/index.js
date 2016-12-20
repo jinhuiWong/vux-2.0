@@ -29,15 +29,15 @@ export default {
           $vm.$el.querySelector('.weui_dialog_bd').innerHTML = options
         }
         if (typeof options === 'object' && (options.onShow || options.onHide)) {
-          watcher = $vm.$watch('show', (val) => {
+          watcher = $vm.$watch('props_show', (val) => {
             val && options.onShow && options.onShow($vm)
             val === false && options.onHide && options.onHide($vm)
           })
         }
-        $vm.show = true
+        $vm.props_show = true
       },
       hide () {
-        $vm.show = false
+        $vm.props_show = false
       }
     }
 

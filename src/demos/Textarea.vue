@@ -14,7 +14,7 @@
       <x-textarea :max="200" placeholder="请填写详细信息" :show-counter="false" :height="200" :rows="8" :cols="30"></x-textarea>
     </group>
     <group title="autosize">
-      <x-textarea placeholder="Type something" :show-counter="false" :rows="1" v-ref:autosize></x-textarea>
+      <x-textarea placeholder="Type something" :show-counter="false" :rows="1" ref="autosize"></x-textarea>
     </group>
   </div>
 </template>
@@ -29,11 +29,11 @@ export default {
     Group,
     XInput
   },
-  ready () {
-    Autosize(this.$refs.autosize.$els.textarea)
+  mounted () {
+    Autosize(this.$refs.autosize.$refs.textarea)
   },
   beforeDestroy () {
-    Autosize.destroy(this.$refs.autosize.$els.textarea)
+    Autosize.destroy(this.$refs.autosize.$refs.textarea)
   }
 }
 </script>

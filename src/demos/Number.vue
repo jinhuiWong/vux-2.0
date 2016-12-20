@@ -23,23 +23,23 @@
     <group title="fillable = false">
       <x-number :value="10" title="Number" :fillable="false"></x-number>
     </group>
-    
+
     <group title="with other element">
       <x-number title="Number" :min="-5" :max="8" :value="1" type="inline"></x-number>
       <x-number title="Number" :min="-5" :max="8" :value="1" type="inline"></x-number>
-      <switch title="Other element" :value.sync="true"></switch>
+      <x-switch title="Other element" :value="true"></x-switch>
     </group>
   </div>
 </template>
 
 <script>
-import { Group, XNumber, Switch } from '../components'
+import { Group, XNumber, XSwitch } from '../components'
 
 export default {
   components: {
     XNumber,
     Group,
-    Switch
+    XSwitch
   },
   methods: {
     change (val) {

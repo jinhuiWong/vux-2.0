@@ -3,18 +3,23 @@
     <div class="weui_cell_bd weui_cell_primary">
       <p>{{title}}</p>
     </div>
-    <div class="weui_cell_ft" v-show="!readonly" style="font-size:0">
+    <div class="weui_cell_ft" v-if="!readonly" style="font-size:0">
       <a @click="sub" class="vux-number-selector vux-number-selector-sub":class="{'vux-number-disabled':disabledMin}">-</a>
-      <input v-model="value" :name="name" class="vux-number-input" :style="{width: width+'px'}" number :readonly="!fillable" pattern="[0-9]*"/>
+      <input v-model="props_value" :name="name" class="vux-number-input" :style="{width: width+'px'}" number :readonly="!fillable" pattern="[0-9]*"/>
       <a @click="add" class="vux-number-selector vux-number-selector-plus" :class="{'vux-number-disabled':disabledMax}">+</a>
     </div>
     <div class="weui_cell_ft" v-else>
-      {{value}}
+      {{props_value}}
     </div>
   </div>
 </template>
 <script>
 export default {
+  data(){
+    return {
+      props_value:0
+    }
+  },
   props: {
     min: Number,
     max: Number,
@@ -45,28 +50,33 @@ export default {
       return typeof this.max === 'undefined' ? false : this.value >= this.max
     }
   },
-  mounted () {
+  created(){
+    this.props_value=this.value
   },
   watch: {
-    value (newValue, old) {
-      if (this.min && this.value < this.min) {
-        this.value = this.min
+    props_value(newValue){
+      if (this.min && this.props_value < this.min) {
+        this.props_value = this.min
       }
-      if (this.max && this.value > this.max) {
-        this.value = this.max
+      if (this.max && this.props_value > this.max) {
+        this.props_value = this.max
       }
-      this.$emit('on-change', this.value)
+      this.$emit('on-change', this.props_value)
+      this.$emit('input',this.props_value)
+    },
+    value (newValue) {
+      this.props_value=newValue
     }
   },
   methods: {
     add () {
       if (!this.disabledMax) {
-        this.value += this.step
+        this.props_value += this.step
       }
     },
     sub () {
       if (!this.disabledMin) {
-        this.value -= this.step
+        this.props_value -= this.step
       }
     }
   }

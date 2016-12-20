@@ -1,39 +1,39 @@
 <template>
   <div style="height: 1000px">
     <group>
-      <switch :value.sync="show" title="Toggle"></switch>
+      <x-switch v-model="show" title="Toggle"></x-switch>
     </group>
     <group style="padding-top: 300px">
-      <switch :value.sync="showNoScroll" title="背景不可滚动"></switch>
+      <x-switch v-model="showNoScroll" title="背景不可滚动"></x-switch>
     </group>
-    <dialog :show.sync="show" class="dialog-demo">
+    <x-dialog v-model="show" class="dialog-demo">
       <p class="dialog-title">I'm a bg scroll Dialog.</p>
       <div class="img-box">
         <img src="../assets/demo/dialog/01.jpg" style="max-width:100%">
       </div>
       <span class="vux-close" @click="show=false"></span>
-    </dialog>
-    <dialog :show.sync="showNoScroll" class="dialog-demo" :scroll="false">
+    </x-dialog>
+    <x-dialog v-model="showNoScroll" class="dialog-demo" :scroll="false">
       <p class="dialog-title">I'm a no scroll Dialog.</p>
       <div class="img-box">
         <img src="../assets/demo/dialog/01.jpg" style="max-width:100%">
       </div>
       <span class="vux-close" @click="showNoScroll=false"></span>
-    </dialog>
+    </x-dialog>
   </div>
 </template>
 
 <script>
-import { Dialog, XButton, Group, Switch } from '../components'
+import { XDialog, XButton, Group, XSwitch } from '../components'
 
 export default {
   components: {
-    Dialog,
+    XDialog,
     XButton,
     Group,
-    Switch
+    XSwitch
   },
-  ready () {
+  mounted () {
     setTimeout(() => {
       this.show = true
     }, 10)

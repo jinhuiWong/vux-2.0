@@ -12,19 +12,17 @@
       :name="name"
       :rows="rows"
       :cols="cols"
-      v-model="value"
+      v-model="props_value"
       :style="textareaStyle"
-      :maxlength="max" v-el:textarea></textarea>
+      :maxlength="max" ref="textarea"></textarea>
       <div class="weui_textarea_counter" v-show="showCounter && max"><span>{{count}}</span>/{{max}}</div>
     </div>
   </div>
 </template>
 
 <script>
-import Base from '../../libs/base'
 
 export default {
-  minxins: [Base],
   props: {
     showCounter: {
       type: Boolean,
@@ -57,18 +55,25 @@ export default {
     spellcheck: 'false'
   },
   watch: {
-    value (newVal) {
-      if (this.max && this.value.length > this.max) {
-        this.value = newVal.slice(0, this.max)
+    props_value(newVal){
+      if (this.max && this.props_value.length > this.max) {
+        this.props_value = newVal.slice(0, this.max)
       }
-      this.$emit('on-change', this.value)
+      this.$emit('on-change', this.props_value)
+      this.$emit('input',this.props_value)
+    },
+    value (newVal) {
+      this.props_value=newVal
     }
+  },
+  created () {
+    this.props_value=this.value
   },
   computed: {
     count () {
       let len = 0
-      if (this.value) {
-        len = this.value.replace(/\n/g, 'aa').length
+      if (this.props_value) {
+        len = this.props_value.replace(/\n/g, 'aa').length
       }
       return len > this.max ? this.max : len
     },
@@ -78,6 +83,14 @@ export default {
           height: `${this.height}px`
         }
       }
+    }
+  },
+  methods: {
+
+  },
+  data () {
+    return {
+      props_value:''
     }
   }
 }

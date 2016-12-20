@@ -17,6 +17,7 @@
     "array-from": "^2.1.1",
     "array-map": "0.0.0",
     "array-shuffle": "^1.0.1",
+    "autosize": "^3.0.20",
     "countup": "^1.6.2",
     "fastclick": "^1.0.6",
     "less": "^2.7.1",

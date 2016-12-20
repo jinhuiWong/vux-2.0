@@ -1,15 +1,16 @@
 // 消除点击延迟
-const FastClick = require('fastclick')
-FastClick.attach(document.body)
+// const FastClick = require('fastclick')
+// FastClick.attach(document.body)
 
 import Vue from 'vue'
 import App from './App'
 
 //============================================= 插件 ===================================
 import ToastPlugin from './plugins/toast'
+import AlertPlugin from './plugins/alert'
 
 Vue.use(ToastPlugin)
-
+Vue.use(AlertPlugin)
 
 //============================================= 路由 ===================================
 import router from './routers/router.js'
