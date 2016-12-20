@@ -11,6 +11,38 @@
 </p>
 
 ## Use
+``` bash
+# install 
+npm install vuxx
+
+#vue-cli项目引用
+#在webpack.base.conf.js添加loader
+
+{
+  test: /vuxx.src.*?js$/,
+  loader: 'babel'
+}
+
+#使用组件
+<template>
+  <div>
+    <group>
+      <cell title="示例"></cell>
+    </group>
+  </div>
+</template>
+
+<script>
+import {Group,Cell} from 'vuxx/src/components'
+export default {
+  components: {
+    Group,
+    Cell
+  }
+}
+</script>
+
+```
 
 ## Development Setup
 
