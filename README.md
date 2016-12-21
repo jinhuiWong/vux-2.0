@@ -33,7 +33,8 @@ npm install vuxx
 </template>
 
 <script>
-import {Group,Cell} from 'vuxx/src/components'
+import Cell from 'vuxx/src/components/Cell'
+import Group from 'vuxx/src/components/Group'
 export default {
   components: {
     Group,
