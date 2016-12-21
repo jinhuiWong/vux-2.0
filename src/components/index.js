@@ -23,8 +23,8 @@ import Picker from './picker'
 import Datetime from './datetime'
 import Popup from './popup'
 import Range from './range'
-// import Actionsheet from './actionsheet'
-// import Clocker from './clocker'
+import Actionsheet from './actionsheet'
+import Clocker from './clocker'
 import Rater from './rater'
 import PopupPicker from './popup-picker'
 import XAddress from './x-address'
@@ -52,17 +52,17 @@ import Masker from './masker'
 import Countdown from './countdown'
 // import FriendlyTime from '../filters/friendly-time'
 import XHeader from './x-header'
-// import Panel from './panel'
+import Panel from './panel'
 import InlineCalendar from './inline-calendar'
 import Badge from './badge'
 import XDialog from './dialog'
-// import Card from './card'
+import Card from './card'
 // import Previewer from './previewer'
 // import NumberRoller from './number-roller'
 import ViewBox from './view-box'
 import Popover from './popover'
 
-// import { ButtonTab, ButtonTabItem } from './button-tab'
+import { ButtonTab, ButtonTabItem } from './button-tab'
 import { Checker, CheckerItem } from './checker'
 import { Flexbox, FlexboxItem } from './flexbox'
 // import { Step, StepItem } from './step'
@@ -97,8 +97,8 @@ const vux = {
   Datetime,
   Popup,
   Range,
-  // Actionsheet,
-  // Clocker,
+  Actionsheet,
+  Clocker,
   Rater,
   PopupPicker,
   XAddress,
@@ -134,13 +134,13 @@ const vux = {
   // StepItem,
   Tabbar,
   TabbarItem,
-  // Panel,
-  // ButtonTab,
-  // ButtonTabItem,
+  Panel,
+  ButtonTab,
+  ButtonTabItem,
   InlineCalendar,
   Badge,
   XDialog,
-  // Card,
+  Card,
   // Previewer,
   // NumberRoller,
   ViewBox,

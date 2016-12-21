@@ -1,10 +1,11 @@
 <template>
-  <span>{{time}}</span>
+  <span>{{props_time}}<input style="display:none" v-model="props_time"></span>
 </template>
 
 <script>
 export default {
   props: {
+    value: Number,
     time: {
       type: Number,
       default: 60
@@ -14,12 +15,16 @@ export default {
       default: true
     }
   },
+  created(){
+    this.props_time=this.time
+    if(this.value) this.props_time=this.value
+  },
   methods: {
     tick () {
       let _this = this
       this.interval = setInterval(function () {
-        if (_this.time > 0) {
-          _this.time--
+        if (_this.props_time > 0) {
+          _this.props_time--
         } else {
           _this.stop()
           _this.index++
@@ -32,8 +37,17 @@ export default {
     }
   },
   watch: {
+    value(val){
+      this.props_time=val
+    },
+    props_time(val){
+      this.$emit('input',val)
+    },
+    time (val) {
+      this.props_time=val
+    },
     start (newVal, oldVal) {
-      if (newVal === true && oldVal === false && this.time > 0) {
+      if (newVal === true && oldVal === false && this.props_time > 0) {
         this.tick()
       }
       if (newVal === false && oldVal === true) {
@@ -49,7 +63,8 @@ export default {
   data () {
     return {
       interval: null,
-      index: 0
+      index: 0,
+      props_time :60
     }
   }
 }

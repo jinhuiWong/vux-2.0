@@ -55,7 +55,12 @@ const Popover = resolve => require(['../components/popover/DemoIndex'], resolve)
 const Circle = resolve => require(['../demos/Circle'], resolve)
 const Countup = resolve => require(['../demos/Countup'], resolve)
 const Countdown = resolve => require(['../demos/Countdown'], resolve)
-
+const Actionsheet = resolve => require(['../demos/Actionsheet'], resolve)
+const ButtonTab = resolve => require(['../demos/Button-tab'], resolve)
+const Clocker = resolve => require(['../demos/Clocker'], resolve)
+const Divider = resolve => require(['../demos/Divider'], resolve)
+const Panel = resolve => require(['../demos/Panel'], resolve)
+const Card = resolve => require(['../demos/Card'], resolve)
 
 
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
@@ -114,6 +119,12 @@ const router = new VueRouter({
         { path: rootPath + 'component/circle', component: Circle , name: 'circle'},
         { path: rootPath + 'component/countup', component: Countup , name: 'countup'},
         { path: rootPath + 'component/countdown', component: Countdown , name: 'countdown'},
+        { path: rootPath + 'component/actionsheet', component: Actionsheet , name: 'actionsheet'},
+        { path: rootPath + 'component/button-tab', component: ButtonTab , name: 'buttonTab'},
+        { path: rootPath + 'component/clocker', component: Clocker , name: 'clocker'},
+        { path: rootPath + 'component/divider', component: Divider , name: 'divider'},
+        { path: rootPath + 'component/panel', component: Panel , name: 'panel'},
+        { path: rootPath + 'component/card', component: Card , name: 'card'},
 
 
 

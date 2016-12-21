@@ -1,9 +1,30 @@
 {
-  "name": "vux2.0",
-  "version": "2.0.0",
+  "name": "vuxx",
+  "version": "0.1.0",
   "description": "vux2.0 project",
   "author": "wong <405176029@qq.com>",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jinhuiWong/vux-2.0"
+  },
+  "homepage": "https://github.com/jinhuiWong/vux-2.0",
+  "bugs": {
+    "url": "https://github.com/jinhuiWong/vux-2.0/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "vux",
+    "vue",
+    "weui",
+    "weex",
+    "vue-components",
+    "web-components",
+    "component",
+    "components",
+    "mobile ui",
+    "framework",
+    "frontend"
+  ],
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",

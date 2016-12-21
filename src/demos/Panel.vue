@@ -1,7 +1,7 @@
 <template>
   <div>
     <group title="switch the type">
-      <radio title="type" :value.sync="type" :options="['1', '2', '3']"></radio>
+      <radio title="type" v-model="type" :options="['1', '2', '3']"></radio>
     </group>
     <panel header="图文组合列表" :footer="footer" :list="list" :type="type"></panel>
   </div>

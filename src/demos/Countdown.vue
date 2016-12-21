@@ -6,10 +6,11 @@
       </cell>
     </group>
     <group title="manually">
-      <x-switch title="start" :value.sync="start"></x-switch>
+      <x-switch title="start" v-model="start"></x-switch>
       <cell title="15s">
-        <countdown slot="value" :time="time" :start="start" @on-finish="finish2"></countdown>
+        <countdown slot="value" v-model="time" :start="start" @on-finish="finish2"></countdown>
       </cell>
+      <cell title="双向绑定time" :value="time"></cell>
     </group>
   </div>
 </template>

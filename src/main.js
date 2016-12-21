@@ -1,6 +1,6 @@
 // 消除点击延迟
-// const FastClick = require('fastclick')
-// FastClick.attach(document.body)
+const FastClick = require('fastclick')
+FastClick.attach(document.body)
 
 import Vue from 'vue'
 import App from './App'

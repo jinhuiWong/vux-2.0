@@ -25,10 +25,7 @@ export default {
       type: Number,
       default: 0
     },
-    value: {
-      type: Number,
-      default: 0
-    },
+    value: Number,
     lineWidth: {
       type: Number,
       default: 3

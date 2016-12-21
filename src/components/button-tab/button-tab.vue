@@ -5,12 +5,57 @@
 </template>
 
 <script>
-import { parentMixin } from '../../mixins/multi-items'
 
 export default {
-  mixins: [parentMixin],
+  mounted() {
+    this.updateIndex()
+    this.$on('onTabItemClick',function(index){
+        this.props_index = index;
+        this.$emit('on-index-change', this.props_index);
+    });
+  },
+  methods: {
+    updateIndex() {
+      if (!this.$children) return
+      this.number = this.$children.length
+      let children = this.$children
+      for (let i = 0; i < children.length; i++) {
+        children[i].index = i
+        if (children[i]=== this.index) {
+            this.props_index = i
+        }
+      }
+    }
+  },
   props: {
+    index: {
+      type: Number,
+      default: -1
+    },
+    value: {
+      type: Number,
+      default: 0
+    },
     height: Number
+  },
+  watch: {
+    props_index(newIndex, oldIndex) {
+      oldIndex > -1 && this.$children[oldIndex] && (this.$children[oldIndex].props_selected = false)
+      newIndex > -1 && (this.$children[newIndex].props_selected = true)
+      this.$emit('input',newIndex);
+    },
+    value(val){
+      this.props_index=val
+    },
+    index : function(newIndex, oldIndex){
+        this.props_index=newIndex;
+    },
+  },
+  data() {
+    return {
+      number: this.$children.length,
+      props_index:0
+    }
   }
 }
 </script>

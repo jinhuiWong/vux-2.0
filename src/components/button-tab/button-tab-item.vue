@@ -5,14 +5,16 @@
 </template>
 
 <script>
-import { childMixin } from '../../mixins/multi-items'
 
 export default {
-  mixins: [childMixin],
+  mounted() {
+    this.$parent.updateIndex()
+    this.props_selected=this.selected
+  },
   computed: {
     classes () {
       return {
-        'vux-button-group-current': this.index === this.$parent.index,
+        'vux-button-group-current': this.index === this.$parent.props_index,
         'no-border-right': this.shouldRemoveBorder
       }
     },
@@ -25,10 +27,48 @@ export default {
       }
     }
   },
-  data () {
+  props: {
+    selected: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted() {
+    this.$parent.updateIndex()
+  },
+  beforeDestroy() {
+    const $parent = this.$parent
+    this.$nextTick(() => {
+      $parent.updateIndex()
+    })
+  },
+  methods: {
+    onItemClick() {
+      if (typeof this.disabled === 'undefined' || this.disabled === false) {
+          this.props_selected = true;
+          this.$parent.$emit('onTabItemClick',this.index);
+      }
+    }
+  },
+  watch: {
+    props_selected(val){
+      if (val) {
+          this.$parent.$emit('onTabItemClick',this.index);
+        }
+    },
+    selected (val) {
+      console.log('selected');
+      this.props_selected=val;
+    }
+  },
+  data() {
     return {
-      shouldRemoveBorder: false
+      index: -1,
+      shouldRemoveBorder: false,
+      props_selected:false
     }
   }
+
+
 }
 </script>

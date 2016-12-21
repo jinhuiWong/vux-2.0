@@ -8,7 +8,7 @@
 <script>
 const Clocker = require('./clocker')
 export default {
-  ready () {
+  mounted () {
     this.slot = this.$el.querySelector('.vux-clocker-tpl')
     this.slotString = this.slot.innerHTML
     if (this.slotString !== '') {

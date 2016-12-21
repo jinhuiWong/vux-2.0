@@ -1,25 +1,25 @@
 <template>
   <div>
     <group>
-      <switch title="Normal Usage" :value.sync="show1"></switch>
-      <switch title="Show cancel menu" :value.sync="show2"></switch>
-      <switch title="menu as tips" :value.sync="show3"></switch>
+      <x-switch title="Normal Usage" v-model="show1"></x-switch>
+      <x-switch title="Show cancel menu" v-model="show2"></x-switch>
+      <x-switch title="menu as tips" v-model="show3"></x-switch>
     </group>
-    <actionsheet :show.sync="show1" :menus="menus1" @on-click-menu="click"></actionsheet>
-    <actionsheet :show.sync="show2" :menus="menus2" @on-click-menu="click" show-cancel></actionsheet>
-    <actionsheet :show.sync="show3" :menus="menus3" @on-click-menu="click" @on-click-menu-delete="onDelete" show-cancel></actionsheet>
-    <toast :show.sync="showSuccess">Deleted~</toast>
+    <actionsheet v-model="show1" :menus="menus1" @on-click-menu="click"></actionsheet>
+    <actionsheet v-model="show2" :menus="menus2" @on-click-menu="click" show-cancel></actionsheet>
+    <actionsheet v-model="show3" :menus="menus3" @on-click-menu="click" @on-click-menu-delete="onDelete" show-cancel></actionsheet>
+    <toast v-model="showSuccess">Deleted~</toast>
   </div>
 </template>
 
 <script>
-import { Actionsheet, Group, Switch, Toast } from '../components'
+import { Actionsheet, Group, XSwitch, Toast } from '../components'
 
 export default {
   components: {
     Actionsheet,
     Group,
-    Switch,
+    XSwitch,
     Toast
   },
   data () {

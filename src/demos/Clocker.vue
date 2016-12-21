@@ -45,7 +45,7 @@ export default {
     Cell,
     Group
   },
-  ready () {
+  mounted () {
     setTimeout(() => {
       this.time1 = '2016-08-13 22:54'
     }, 5000)
