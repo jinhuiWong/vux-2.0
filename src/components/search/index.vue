@@ -5,12 +5,12 @@
         <div class="vux-search-mask" @click="touch" v-show="!isFixed && autoFixed"></div>
         <div class="weui_search_inner">
           <i class="weui_icon_search"></i>
-          <input type="search" class="weui_search_input" id="search_input" :placeholder="placeholder" autocomplete="off" :required="required" v-model="value" v-el:input
+          <input type="search" class="weui_search_input" id="search_input" :placeholder="placeholder" autocomplete="off" :required="required" v-model="currentValue" ref="input"
           @focus="isFocus = true"
           @blur="isFocus = false"/>
           <a href="javascript:" class="weui_icon_clear" id="search_clear" @click="clear"></a>
         </div>
-        <label for="search_input" class="weui_search_text" id="search_text" v-show="!isFocus && !value">
+        <label for="search_input" class="weui_search_text" id="search_text" v-show="!isFocus && !currentValue">
           <i class="weui_icon_search"></i>
           <span>{{placeholder}}</span>
         </label>
@@ -64,12 +64,12 @@ export default {
   },
   methods: {
     clear () {
-      this.value = ''
+      this.currentValue = ''
       this.isFocus = true
       this.setFocus()
     },
     cancel () {
-      this.value = ''
+      this.currentValue = ''
       this.isCancel = true
       this.isFixed = false
       this.$emit('on-cancel')
@@ -86,14 +86,15 @@ export default {
       }
     },
     setFocus () {
-      this.$els.input.focus()
+      this.$refs.input.focus()
     }
   },
   data () {
     return {
       isCancel: true,
       isFocus: false,
-      isFixed: false
+      isFixed: false,
+      currentValue: this.value
     }
   },
   watch: {
@@ -105,7 +106,7 @@ export default {
       }
     },
     value (val) {
-      this.$emit('on-change', this.value)
+      this.$emit('on-change', this.currentValue)
     }
   }
 }
