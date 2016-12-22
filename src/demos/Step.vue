@@ -10,7 +10,7 @@
     </div>
     <divider>切换到下一步</divider>
     <div>
-      <step :current.sync="step2" background-color='#fbf9fe' gutter="20px">
+      <step :current="step2" background-color='#fbf9fe' gutter="20px">
         <step-item title="已完成"></step-item>
         <step-item title="进行中"></step-item>
         <step-item title="待完成"></step-item>

@@ -67,10 +67,8 @@ export default {
       console.log('new Value', value)
     },
     change3 (value) {
-      debugger
       this.year5 = value[0]+''
       console.log(this.year5)
-      console.log('gg')
     },
     setData1 () {
       this.year7Value = ['USA', 'usa002', '0005']

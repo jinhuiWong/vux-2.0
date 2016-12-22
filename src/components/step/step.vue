@@ -18,7 +18,7 @@ export default {
       default: '10px'
     }
   },
-  ready () {
+  mounted () {
     this._mapPropsToChildComponent()
   },
   watch: {
@@ -31,15 +31,15 @@ export default {
       const _this = this
       const len = this.$children.length - 1
       this.$children.forEach((child, index) => {
-        child.stepNumber = (index + 1).toString()
-        child.stepLast = index === len
+        child.props_stepNumber = (index + 1).toString()
+        child.props_stepLast = index === len
 
         if (index === _this.current) {
-          child.status = 'process'
+          child.props_status = 'process'
         } else if (index < _this.current) {
-          child.status = 'finish'
+          child.props_status = 'finish'
         } else {
-          child.status = 'wait'
+          child.props_status = 'wait'
         }
       })
     }

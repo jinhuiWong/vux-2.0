@@ -4,7 +4,7 @@
     <br>
     <search @on-submit="onSubmit" :auto-fixed="autoFixed"></search>
     <divider>set value</divider>
-    <search @on-submit="onSubmit" :auto-fixed="false" :value.sync="value2"></search>
+    <search @on-submit="onSubmit" :auto-fixed="false" v-model="value2"></search>
   </div>
 </template>
 

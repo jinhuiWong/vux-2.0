@@ -56,7 +56,6 @@ export default {
       }, 2000)
     },
     changePullupStatus (enabled) {
-      debugger
       if (enabled) {
         // this.$broadcast('pullup:enable', this.$refs.scroller.uuid)
         this.$refs.scroller.$emit('pullup:enable',this.$refs.scroller.uuid)

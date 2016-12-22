@@ -10,10 +10,10 @@
     <br>
     <x-header>long long long long long long long text<a slot="right">Feedback</a></x-header>
     <br>
-    <x-header>with left slot<a slot="left">Close</a></x-header>
+    <x-header>with left slot<a slot="left" @click="onclose">Close</a></x-header>
     <br>
-    <x-header style="background-color:#000;">custom background color</x-header>
-    <actionsheet :menus="menus" :show.sync="showMenus" show-cancel></actionsheet>
+    <x-header style="background-color:#f24549;">custom background color</x-header>
+    <actionsheet :menus="menus" v-model="showMenus" show-cancel></actionsheet>
   </div>
 </template>
 
@@ -33,6 +33,11 @@ export default {
         menu2: 'Choose from photos'
       },
       showMenus: false
+    }
+  },
+  methods:{
+    onclose(){
+      alert("Close!")
     }
   }
 }

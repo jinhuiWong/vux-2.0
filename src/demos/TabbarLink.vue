@@ -33,9 +33,9 @@ import { Tabbar, TabbarItem } from '../components'
 
 export default {
   mounted () {
-    document.querySelector('body').style.height = '100%'
-    document.querySelector('html').style.height = '100%'
-    document.querySelector('#app').style.height = '100%'
+    // document.querySelector('body').style.height = '100%'
+    // document.querySelector('html').style.height = '100%'
+    // document.querySelector('#app').style.height = '100%'
   },
   components: {
     Tabbar,

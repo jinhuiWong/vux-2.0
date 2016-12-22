@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     scrollTop () {
-      debugger
       this.$refs.viewbox.$refs.viewboxbody.scrollTop = 0
     }
   },

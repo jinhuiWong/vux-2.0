@@ -1,7 +1,9 @@
 <template>
   <div>
-    <img class="previewer-demo-img" v-for="(index, item) in list" :src="item.src" width="100" @click="$refs.previewer.show(index)">
-    <previewer :list="list" v-ref:previewer :options="options"></previewer>
+    <img class="previewer-demo-img" v-for="(item, index) in list" :src="item.src" width="100" @click="onImgClick(index)">
+    <!-- <previewer :list="list" ref="previewer" :options="options"></previewer> -->
+    <previewer :list="list" ref="previewer"></previewer>
+
   </div>
 </template>
 
@@ -15,14 +17,19 @@ export default {
   data () {
     return {
       list: [{
-        src: 'https://placekitten.com/600/400',
+        src: 'http://og1rlwcj8.bkt.clouddn.com/005JqWi9gw1ewwctbyvbsj30c8096t8y.jpg',
         w: 600,
         h: 400
       },
       {
-        src: 'https://placekitten.com/1200/900',
+        src: 'http://og1rlwcj8.bkt.clouddn.com/20141111234454_AwKCm.thumb.700_0.jpeg',
         w: 1200,
         h: 900
+      },
+      {
+        src: 'http://og1rlwcj8.bkt.clouddn.com/zxy.jpg',
+        w: 400,
+        h: 400
       }],
       options: {
         getThumbBoundsFn (index) {
@@ -39,6 +46,11 @@ export default {
           // http://javascript.info/tutorial/coordinates
         }
       }
+    }
+  },
+  methods:{
+    onImgClick(index){
+      this.$refs.previewer.show(index)
     }
   }
 }

@@ -61,6 +61,15 @@ const Clocker = resolve => require(['../demos/Clocker'], resolve)
 const Divider = resolve => require(['../demos/Divider'], resolve)
 const Panel = resolve => require(['../demos/Panel'], resolve)
 const Card = resolve => require(['../demos/Card'], resolve)
+const Previewer = resolve => require(['../demos/Previewer'], resolve)
+const Progress = resolve => require(['../demos/Progress'], resolve)
+const Reddot = resolve => require(['../demos/Reddot'], resolve)
+const Sticky = resolve => require(['../demos/Sticky'], resolve)
+const Search = resolve => require(['../demos/Search'], resolve)
+const SearchStatic = resolve => require(['../demos/Search-static'], resolve)
+const Timeline = resolve => require(['../demos/Timeline'], resolve)
+const Step = resolve => require(['../demos/Step'], resolve)
+const XHeader = resolve => require(['../demos/X-header'], resolve)
 
 
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
@@ -125,6 +134,15 @@ const router = new VueRouter({
         { path: rootPath + 'component/divider', component: Divider , name: 'divider'},
         { path: rootPath + 'component/panel', component: Panel , name: 'panel'},
         { path: rootPath + 'component/card', component: Card , name: 'card'},
+        { path: rootPath + 'component/previewer', component: Previewer , name: 'previewer'},
+        { path: rootPath + 'component/progress', component: Progress , name: 'progress'},
+        { path: rootPath + 'component/reddot', component: Reddot , name: 'reddot'},
+        { path: rootPath + 'component/sticky', component: Sticky , name: 'sticky'},
+        { path: rootPath + 'component/search', component: Search , name: 'search'},
+        { path: rootPath + 'component/search-static', component: SearchStatic , name: 'searchStatic'},
+        { path: rootPath + 'component/timeline', component: Timeline , name: 'timeline'},
+        { path: rootPath + 'component/step', component: Step , name: 'step'},
+        { path: rootPath + 'component/x-header', component: XHeader , name: 'header'},
 
 
 

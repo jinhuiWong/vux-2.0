@@ -1,16 +1,16 @@
 <template>
   <div class="vux-search-box" :class="{'vux-search-fixed':isFixed}" :style="{top: isFixed ? top : ''}">
     <div class="weui_search_bar" id="search_bar" :class="{weui_search_focusing: !isCancel}">
-      <form class="weui_search_outer" @submit.prevent="$emit('on-submit', value)">
+      <form class="weui_search_outer" @submit.prevent="$emit('on-submit', props_value)">
         <div class="vux-search-mask" @click="touch" v-show="!isFixed && autoFixed"></div>
         <div class="weui_search_inner">
           <i class="weui_icon_search"></i>
-          <input type="search" class="weui_search_input" id="search_input" :placeholder="placeholder" autocomplete="off" :required="required" v-model="value" v-el:input
+          <input type="search" class="weui_search_input" id="search_input" :placeholder="placeholder" autocomplete="off" :required="required" v-model="props_value" ref="input"
           @focus="isFocus = true"
           @blur="isFocus = false"/>
           <a href="javascript:" class="weui_icon_clear" id="search_clear" @click="clear"></a>
         </div>
-        <label for="search_input" class="weui_search_text" id="search_text" v-show="!isFocus && !value">
+        <label for="search_input" class="weui_search_text" id="search_text" v-show="!isFocus && !props_value">
           <i class="weui_icon_search"></i>
           <span>{{placeholder}}</span>
         </label>
@@ -62,14 +62,17 @@ export default {
       default: '0px'
     }
   },
+  created(){
+    this.props_value=this.value
+  },
   methods: {
     clear () {
-      this.value = ''
+      this.props_value = ''
       this.isFocus = true
       this.setFocus()
     },
     cancel () {
-      this.value = ''
+      this.props_value = ''
       this.isCancel = true
       this.isFixed = false
       this.$emit('on-cancel')
@@ -86,14 +89,15 @@ export default {
       }
     },
     setFocus () {
-      this.$els.input.focus()
+      this.$refs.input.focus()
     }
   },
   data () {
     return {
       isCancel: true,
       isFocus: false,
-      isFixed: false
+      isFixed: false,
+      props_value:''
     }
   },
   watch: {
@@ -104,8 +108,12 @@ export default {
       } else {
       }
     },
+    props_value(val){
+      this.$emit('on-change', val)
+      this.$emit('input',val)
+    },
     value (val) {
-      this.$emit('on-change', this.value)
+      this.props_value=val
     }
   }
 }

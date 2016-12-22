@@ -32,7 +32,7 @@ import Toast from './toast'
 import Loading from './loading'
 import Alert from './alert'
 import Confirm from './confirm'
-// import Progress from './progress'
+import XProgress from './progress'
 // import XImg from './x-img'
 import Spinner from './spinner'
 import Calendar from './calendar'
@@ -46,7 +46,7 @@ import Countup from './countup'
 import Scroller from './scroller'
 // import Shake from './shake'
 // import WechatEmotion from './wechat-emotion'
-// import Search from './search'
+import Search from './search'
 // import DateFormatter from './datetime/format'
 import Masker from './masker'
 import Countdown from './countdown'
@@ -57,7 +57,7 @@ import InlineCalendar from './inline-calendar'
 import Badge from './badge'
 import XDialog from './dialog'
 import Card from './card'
-// import Previewer from './previewer'
+import Previewer from './previewer'
 // import NumberRoller from './number-roller'
 import ViewBox from './view-box'
 import Popover from './popover'
@@ -65,8 +65,8 @@ import Popover from './popover'
 import { ButtonTab, ButtonTabItem } from './button-tab'
 import { Checker, CheckerItem } from './checker'
 import { Flexbox, FlexboxItem } from './flexbox'
-// import { Step, StepItem } from './step'
-// import { Timeline, TimelineItem } from './timeline'
+import { Step, StepItem } from './step'
+import { Timeline, TimelineItem } from './timeline'
 import { Tabbar, TabbarItem } from './tabbar'
 import { Tab, TabItem } from './tab'
 
@@ -106,7 +106,7 @@ const vux = {
   Loading,
   Alert,
   Confirm,
-  // Progress,
+  XProgress,
   // XImg,
   Spinner,
   Calendar,
@@ -120,7 +120,7 @@ const vux = {
   Scroller,
   // Shake,
   // WechatEmotion,
-  // Search,
+  Search,
   // DateFormatter,
   Masker,
   Countdown,
@@ -128,10 +128,10 @@ const vux = {
   XHeader,
   Checker,
   CheckerItem,
-  // Timeline,
-  // TimelineItem,
-  // Step,
-  // StepItem,
+  Timeline,
+  TimelineItem,
+  Step,
+  StepItem,
   Tabbar,
   TabbarItem,
   Panel,
@@ -141,7 +141,7 @@ const vux = {
   Badge,
   XDialog,
   Card,
-  // Previewer,
+  Previewer,
   // NumberRoller,
   ViewBox,
   Popover

@@ -1,11 +1,12 @@
 <template>
   <div>
     <img src="../assets/demo/filter_bg.jpg" style="width: 100%">
-    <search @result-click="resultClick" @on-change="getResult" :results="results" :value.sync="value" top="46px"></search>
+    <search @result-click="resultClick" @on-change="getResult" :results="results" v-model="value" top="46px"></search>
     <br>
     <group>
       <cell title="static position demo" is-link link="/component/search-static"></cell>
     </group>
+    <p style="margin-top:50px">当前输入value:{{value}}</p>
   </div>
 </template>
 
