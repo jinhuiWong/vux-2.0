@@ -1,5 +1,5 @@
 <template>
-  <img :src="defaultSrc" class="vux-x-img" :class="class"/>
+  <img :src="defaultSrc" class="vux-x-img" :class="cls"/>
 </template>
 
 <script>
@@ -9,17 +9,21 @@ import uuidMixin from '../../libs/mixin_uuid'
 
 export default {
   mixins: [uuidMixin],
-  compiled () {
+  created(){
+    this.props_src=this.src
+  },
+  mounted () {
     // use webp or default
-    if (webpSupport() && this.src && this.webpSrc) {
-      this.src = this.webpSrc
+    if (webpSupport() && this.props_src && this.webpSrc) {
+      this.props_src = this.webpSrc
     }
   },
-  ready () {
+  mounted () {
+    debugger
     const _this = this
     const id = `vux-ximg-${this.uuid}`
     this.$el.setAttribute('id', id)
-    this.$el.setAttribute('data-src', this.src)
+    this.$el.setAttribute('data-src', this.props_src)
     this.blazy = new Blazy({
       scroller: this.scroller,
       container: this.container,
@@ -28,12 +32,17 @@ export default {
       errorClass: _this.errorClass,
       successClass: _this.successClass,
       success (ele) {
-        _this.$emit('on-success', _this.src, ele)
+        _this.$emit('on-success', _this.props_src, ele)
       },
       error (ele, msg) {
-        _this.$emit('on-error', _this.src, ele, msg)
+        _this.$emit('on-error', _this.props_src, ele, msg)
       }
     })
+  },
+  data(){
+    return {
+      props_src:null
+    }
   },
   props: {
     src: String,
@@ -48,7 +57,7 @@ export default {
       type: Number,
       defaut: 100
     },
-    class: String,
+    cls: String,
     scroller: Object,
     container: String
   },

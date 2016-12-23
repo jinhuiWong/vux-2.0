@@ -2,7 +2,7 @@
 import Style from '../styles/index.vue' // eslint-disable-line
 
 import Radio from './radio'
-// import DevTip from './dev-tip'
+import DevTip from './dev-tip'
 import XInput from './x-input'
 import XNumber from './x-number'
 import Cell from './cell'
@@ -13,7 +13,7 @@ import XTextarea from './x-textarea'
 import Group from './group'
 import GroupTitle from './group-title'
 import Box from './box'
-// import Tip from './tip'
+import Tip from './tip'
 import Selector from './selector'
 import XButton from './x-button'
 import Swiper from './swiper'
@@ -33,7 +33,7 @@ import Loading from './loading'
 import Alert from './alert'
 import Confirm from './confirm'
 import XProgress from './progress'
-// import XImg from './x-img'
+import XImg from './x-img'
 import Spinner from './spinner'
 import Calendar from './calendar'
 import Icon from './icon'
@@ -44,8 +44,8 @@ import Divider from './divider'
 import Blur from './blur'
 import Countup from './countup'
 import Scroller from './scroller'
-// import Shake from './shake'
-// import WechatEmotion from './wechat-emotion'
+import Shake from './shake'
+import WechatEmotion from './wechat-emotion'
 import Search from './search'
 // import DateFormatter from './datetime/format'
 import Masker from './masker'
@@ -73,14 +73,14 @@ import { Tab, TabItem } from './tab'
 const vux = {
   Radio,
   Group,
-  // DevTip,
+  DevTip,
   XInput,
   GroupTitle,
   XNumber,
   Checklist,
   XSwitch,
   Box,
-  // Tip,
+  Tip,
   Selector,
   Cell,
   InlineDesc,
@@ -107,7 +107,7 @@ const vux = {
   Alert,
   Confirm,
   XProgress,
-  // XImg,
+  XImg,
   Spinner,
   Calendar,
   Icon,
@@ -118,8 +118,8 @@ const vux = {
   Blur,
   Countup,
   Scroller,
-  // Shake,
-  // WechatEmotion,
+  Shake,
+  WechatEmotion,
   Search,
   // DateFormatter,
   Masker,

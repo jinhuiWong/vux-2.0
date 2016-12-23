@@ -199,15 +199,15 @@
       <cell title="masker" link="component/masker">
         <span class="demo-icon" slot="icon">&#xe651;</span>
       </cell>
-      <cell title="orientation" value="横竖屏切换提示" link="component/orientation">
+<!--       <cell title="orientation" value="横竖屏切换提示" link="component/orientation">
         <span class="demo-icon" slot="icon">&#xe628;</span>
-      </cell>
-      <cell title="shake" value="摇一摇" link="component/shake">
+      </cell> -->
+<!--       <cell title="shake" value="摇一摇" link="component/shake">
         <span class="demo-icon" slot="icon">&#xe629;</span>
-      </cell>
-      <cell title="x-img" value="延迟加载及webp切换支持" link="component/x-img">
+      </cell> -->
+<!--       <cell title="x-img" value="延迟加载及webp切换支持" link="component/x-img">
         <span class="demo-icon" slot="icon">&#xe602;</span>
-      </cell>
+      </cell> -->
       <cell title="qrcode" link="component/qrcode">
         <span class="demo-icon" slot="icon">&#xe65a;</span>
       </cell>

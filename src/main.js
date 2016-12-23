@@ -8,7 +8,9 @@ import App from './App'
 //============================================= 插件 ===================================
 import ToastPlugin from './plugins/toast'
 import AlertPlugin from './plugins/alert'
+import Device from './plugins/device'
 
+Vue.use(Device)
 Vue.use(ToastPlugin)
 Vue.use(AlertPlugin)
 

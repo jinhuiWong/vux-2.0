@@ -17,7 +17,7 @@ import Qrcode from '../components/qrcode'
 import { Divider } from '../components'
 
 export default {
-  ready () {
+  mounted () {
     setInterval(() => {
       this.value = `https://vux.li?t=${Math.random()}`
       this.fgColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`

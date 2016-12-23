@@ -1,8 +1,10 @@
 <template>
-  <span class="vux-close" style="width:14px;height:14px;"></span>
-  <span class="vux-close"></span>
-  <span class="vux-close" style="width:30px;height:30px;color:#ccc;"></span>
-  <span class="vux-close vux-close-2px" style="width:40px;height:40px;color:#ccc;"></span>
+  <div>
+    <span class="vux-close" style="width:14px;height:14px;"></span>
+    <span class="vux-close"></span>
+    <span class="vux-close" style="width:30px;height:30px;color:#ccc;"></span>
+    <span class="vux-close vux-close-2px" style="width:40px;height:40px;color:#ccc;"></span>
+  </div>
 </template>
 
 <style lang="less">

@@ -28,14 +28,14 @@ export default {
   data () {
     return {
       list: [
-        'https://o5omsejde.qnssl.com/demo/test1.jpg',
+        'http://og1rlwcj8.bkt.clouddn.com/005JqWi9gw1ewwctbyvbsj30c8096t8y.jpg',
         'https://o5omsejde.qnssl.com/demo/test2.jpg',
-        'https://o5omsejde.qnssl.com/demo/test0.jpg',
-        'https://o5omsejde.qnssl.com/demo/test4.jpg',
+        'http://og1rlwcj8.bkt.clouddn.com/f1.jpg',
+        'http://og1rlwcj8.bkt.clouddn.com/ty.jpg',
         'https://o5omsejde.qnssl.com/demo/test5.jpg',
         'https://o5omsejde.qnssl.com/demo/test6.jpg',
-        'https://o5omsejde.qnssl.com/demo/test7.jpg',
-        'https://o5omsejde.qnssl.com/demo/test8.jpg'
+        'http://og1rlwcj8.bkt.clouddn.com/zxy.jpg',
+        'http://og1rlwcj8.bkt.clouddn.com/u=3737719926,1965507257&fm=21&gp=0.jpg'
       ]
     }
   }

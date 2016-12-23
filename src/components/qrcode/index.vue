@@ -29,13 +29,18 @@ export default {
       default: '#000000'
     }
   },
-  ready () {
+  mounted () {
     this.render()
   },
   watch: {
-    'value+size+level+bgColor+fgColor' () {
-      this.render()
-    }
+    // 'value+size+level+bgColor+fgColor' () {
+    //   this.render()
+    // }
+    value(){this.render()},
+    size(){this.render()},
+    level(){this.render()},
+    bgColor(){this.render()},
+    fgColor(){this.render()},
   },
   methods: {
     render () {
