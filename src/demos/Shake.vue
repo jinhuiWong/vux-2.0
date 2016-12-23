@@ -1,7 +1,7 @@
 <template>
   <div>
     <p style="text-align:center">shake your phone</p>
-    <shake @shake="shake" :threshold="5"></shake>
+    <shake @shake="onShake" :threshold="5"></shake>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     Shake
   },
   methods: {
-    'on-shake' () {
+    onShake() {
       alert('share')
     }
   }

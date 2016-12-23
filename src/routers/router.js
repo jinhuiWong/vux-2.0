@@ -70,6 +70,18 @@ const SearchStatic = resolve => require(['../demos/Search-static'], resolve)
 const Timeline = resolve => require(['../demos/Timeline'], resolve)
 const Step = resolve => require(['../demos/Step'], resolve)
 const XHeader = resolve => require(['../demos/X-header'], resolve)
+const Comment = resolve => require(['../demos/Comment'], resolve)
+const Emotion = resolve => require(['../demos/Wechat-emotion'], resolve)
+const Qrcode = resolve => require(['../demos/Qrcode'], resolve)
+const Onepx = resolve => require(['../demos/1px'], resolve)
+const Center = resolve => require(['../demos/Center'], resolve)
+const Close = resolve => require(['../demos/Close'], resolve)
+const DeviceDemo = resolve => require(['../demos/Device'], resolve)
+const Wechat = resolve => require(['../Wechat'], resolve)
+const Yi = resolve => require(['../yi'], resolve)
+
+// const Shake = resolve => require(['../demos/Shake'], resolve)
+// const XImg = resolve => require(['../demos/XImg'], resolve)
 
 
 /** -------------------------------------------------- 懒加载end --------------------------------------------*/
@@ -143,7 +155,18 @@ const router = new VueRouter({
         { path: rootPath + 'component/timeline', component: Timeline , name: 'timeline'},
         { path: rootPath + 'component/step', component: Step , name: 'step'},
         { path: rootPath + 'component/x-header', component: XHeader , name: 'header'},
+        { path: rootPath + 'component/comment', component: Comment , name: 'comment'},
+        { path: rootPath + 'component/emotion', component: Emotion , name: 'emotion'},
+        { path: rootPath + 'component/qrcode', component: Qrcode , name: 'qrcode'},
+        { path: rootPath + 'component/1px', component: Onepx , name: '1px'},
+        { path: rootPath + 'component/center', component: Center , name: 'center'},
+        { path: rootPath + 'component/close', component: Close , name: 'close'},
+        { path: rootPath + 'plugin/device', component: DeviceDemo , name: 'device'},
+        { path: rootPath + 'demo/wechat', component: Wechat , name: 'wechat'},
+        { path: rootPath + 'demo/yi', component: Yi , name: 'yi'},
 
+        // { path: rootPath + 'component/shake', component: Shake , name: 'shake'},
+        // { path: rootPath + 'component/x-img', component: XImg , name: 'XImg'},
 
 
         //找不到页面就返回404页面

@@ -40,7 +40,7 @@
 <script>
 const list = [{
   name: 'Airyland',
-  avatar: 'static/demo/comment/1.jpg',
+  avatar: 'http://og1rlwcj8.bkt.clouddn.com/zxy.jpg',
   time: '昨天',
   like_num: 99,
   content: '沙发',
@@ -51,13 +51,13 @@ const list = [{
   }]
 }, {
   name: 'Vux',
-  avatar: 'static/demo/comment/2.jpg',
+  avatar: 'http://og1rlwcj8.bkt.clouddn.com/default.png',
   time: '未来时间',
   like_num: 0,
   content: '板凳'
 }, {
   name: 'Secret',
-  avatar: 'static/demo/comment/3.jpg',
+  avatar: 'http://og1rlwcj8.bkt.clouddn.com/favicon.jpg',
   time: '未来时间',
   like_num: 99,
   content: '居然没抢到沙发'
