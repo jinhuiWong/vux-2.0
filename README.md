@@ -1,6 +1,5 @@
 # vux-2.0
 根据vux-https://github.com/airyland/vux 修改升级的2.0
-持续更新中...
 
 ## Demo
 
