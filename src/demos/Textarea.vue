@@ -1,7 +1,8 @@
 <template>
   <div>
     <group title="textarea">
-      <x-textarea :max="20" placeholder="请填写详细信息"></x-textarea>
+      <x-input placeholder="双向绑定" v-model="value"></x-input>
+      <x-textarea :max="20" placeholder="请填写详细信息" v-model="value"></x-textarea>
     </group>
     <group title="和input一起使用">
       <x-input placeholder="标题"></x-input>
@@ -28,6 +29,11 @@ export default {
     XTextarea,
     Group,
     XInput
+  },
+  data(){
+    return{
+      value:""
+    }
   },
   mounted () {
     Autosize(this.$refs.autosize.$refs.textarea)

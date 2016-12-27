@@ -14,7 +14,7 @@ export default {
     NumberRoller,
     Divider
   },
-  ready () {
+  mounted () {
     setInterval(() => {
       this.number = 100000 + Math.round(Math.random() * 899999)
     }, 3000)

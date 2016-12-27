@@ -1,6 +1,10 @@
 # vux-2.0
 根据vux-https://github.com/airyland/vux 修改升级的2.0
 
+## Docs
+
++ [中文文档](https://jinhuiwong.gitbooks.io/vuxx/content/)
+
 ## Demo
 
 <p align="center">

@@ -47,10 +47,10 @@ import Scroller from './scroller'
 import Shake from './shake'
 import WechatEmotion from './wechat-emotion'
 import Search from './search'
-// import DateFormatter from './datetime/format'
+import DateFormatter from './datetime/format'
 import Masker from './masker'
 import Countdown from './countdown'
-// import FriendlyTime from '../filters/friendly-time'
+import FriendlyTime from '../filters/friendly-time'
 import XHeader from './x-header'
 import Panel from './panel'
 import InlineCalendar from './inline-calendar'
@@ -58,7 +58,7 @@ import Badge from './badge'
 import XDialog from './dialog'
 import Card from './card'
 import Previewer from './previewer'
-// import NumberRoller from './number-roller'
+import NumberRoller from './number-roller'
 import ViewBox from './view-box'
 import Popover from './popover'
 
@@ -121,10 +121,10 @@ const vux = {
   Shake,
   WechatEmotion,
   Search,
-  // DateFormatter,
+  DateFormatter,
   Masker,
   Countdown,
-  // FriendlyTime,
+  FriendlyTime,
   XHeader,
   Checker,
   CheckerItem,
@@ -142,7 +142,7 @@ const vux = {
   XDialog,
   Card,
   Previewer,
-  // NumberRoller,
+  NumberRoller,
   ViewBox,
   Popover
 }

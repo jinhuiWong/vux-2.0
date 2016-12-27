@@ -13,7 +13,7 @@ export default {
       default: 3
     }
   },
-  ready () {
+  mounted () {
     this._roller = new Roller({
       container: this.$el,
       width: this.width
