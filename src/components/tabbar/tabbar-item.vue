@@ -12,7 +12,7 @@
 
 <script>
 import Badge from '../badge'
-
+import {go} from '../../libs/router.js'
 export default {
   components: {
     Badge
@@ -28,7 +28,7 @@ export default {
   },
   beforeMount(){
       this.$on('on-item-click',function(index) {
-          this.link ? this.$router.push(this.link) : false;
+          this.link ? go(this.link,this.$router) : false;
           this.$parent.$emit('onTabbarItemClick',index);
       });
   },

@@ -5,24 +5,24 @@
     </div>
     <tabbar>
       <!--use v-link-->
-      <tabbar-item link="{path:'/component/cell'}">
+      <tabbar-item :link="{name:'cell'}">
         <img slot="icon" src="../assets/demo/icon_nav_button.png">
-        <span slot="label">Wechat</span>
+        <span slot="label">命名路由</span>
       </tabbar-item>
       <!--use http link-->
       <tabbar-item show-dot link="https://vux.li">
         <img slot="icon" src="../assets/demo/icon_nav_msg.png">
-        <span slot="label">Message</span>
+        <span slot="label">外部跳转</span>
       </tabbar-item>
       <!--use vue-router link-->
       <tabbar-item selected link="/component/cell">
         <img slot="icon" src="../assets/demo/icon_nav_article.png">
-        <span slot="label">Explore</span>
+        <span slot="label">字符串</span>
       </tabbar-item>
       <!--use vue-router object link-->
       <tabbar-item :link="{path:'/component/cell'}">
         <img slot="icon" src="../assets/demo/icon_nav_cell.png">
-        <span slot="label">News</span>
+        <span slot="label">path</span>
       </tabbar-item>
     </tabbar>
   </div>

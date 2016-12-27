@@ -1,5 +1,5 @@
 <template>
-  <div class="weui_dialog_alert fix_ios_fixed" @touchmove="onTouchMove">
+  <div class="weui_dialog_alert fix_ios_fixed" @touchmove="onTouchMove" v-show="props_show">
     <transition name="vux-mask">
       <div class="weui_mask" @click="hideOnBlur && (props_show = false)" v-show="props_show"></div>
     </transition>
