@@ -20,7 +20,7 @@
 
 <script>
 import Swiper from './swiper'
-
+import { go } from '../../libs/router'
 export default {
   mounted () {
     if (!(this.list && this.list.length === 0)) {
@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     clickListItem (item) {
-      this.$router.push(item.url);
+      go(item.url,this.$router)
       this.$emit('on-click-list-item', JSON.parse(JSON.stringify(item)))
     },
     buildBackgroundUrl (url) {
