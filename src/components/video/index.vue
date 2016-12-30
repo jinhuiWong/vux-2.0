@@ -15,7 +15,7 @@ export default {
     cover: String,
     video: String
   },
-  ready () {
+  mounted () {
     this._player = Media(this.$el.querySelector('video'))
     console.log(this._player)
   }
