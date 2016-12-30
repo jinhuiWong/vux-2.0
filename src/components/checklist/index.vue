@@ -56,7 +56,7 @@ export default {
       errors: {},
       prisine: true,
       touched: false,
-      valid: true,
+      // valid: true,
       props_options:[],
       props_value:[]
     }
@@ -146,6 +146,7 @@ export default {
         this.$emit('on-change', newVal)
       }
       this.$emit('on-change', JSON.parse(JSON.stringify(newVal)))
+      this.$emit('input',newVal)
     },
     value (newVal) {
       this.props_value=newVal
