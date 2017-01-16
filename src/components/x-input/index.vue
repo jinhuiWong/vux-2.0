@@ -238,14 +238,11 @@ export default {
     }
   },
   data () {
-    let data = {
+    return {
       firstError: '',
       forceShowError: false,
       hasLengthEqual: false,
-      focus: false
-    }
-    return {
-      data : data,
+      focus: false,
       errors: {},
       touched: false,
       valid: true,
