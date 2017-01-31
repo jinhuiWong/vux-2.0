@@ -8,9 +8,9 @@
 ## Demo
 
 <p align="center">
-  <a href="http://jh-wong.com/vux2">http://jh-wong.com/vux2</a><br/>
+  <a href="http://jhwong.cn/vux2">http://jhwong.cn/vux2</a><br/>
   (You can view the demos' codes in <a href="https://github.com/jinhuiWong/vux-2.0/tree/master/src/demos"><strong>/src/demos</strong></a>)<br/>
-  <img src="http://og1rlwcj8.bkt.clouddn.com/1482162905.png" width="300">
+  <img src="http://og1rlwcj8.bkt.clouddn.com/1485876811.png" width="300">
 </p>
 
 ## Use
